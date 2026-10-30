@@ -27,7 +27,7 @@ export const wedding = {
       src: "/masseria-wedding-logo.svg",
       alt: "Masseria Spina Resort · 31 agosto 2027 · Monopoli",
       width: 1600,
-      height: 1780,
+      height: 1850,
     },
     /** Full-bleed Masseria immediately after hero */
     masseria: {

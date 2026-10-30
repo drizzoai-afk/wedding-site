@@ -41,7 +41,7 @@ export function Hero() {
           <span className="block">{wedding.partnerTwo}</span>
         </h1>
 
-        <div className="animate-rise-3 mt-10 w-full max-w-[min(92vw,28rem)] sm:max-w-[32rem] md:max-w-[38rem]">
+        <div className="animate-rise-3 mt-8 w-full max-w-[min(92vw,28rem)] sm:max-w-[32rem] md:max-w-[38rem]">
           <Image
             src={wedding.images.logo.src}
             alt={wedding.images.logo.alt}
@@ -52,7 +52,7 @@ export function Hero() {
           />
         </div>
 
-        <div className="animate-rise-4 mt-10 flex flex-wrap items-center justify-center gap-3">
+        <div className="animate-rise-4 mt-4 flex flex-wrap items-center justify-center gap-3">
           <Link
             href="#rsvp"
             className={cn(
