@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { PhotoFrame } from "@/components/photo-frame";
 import { useLocale } from "@/lib/i18n/locale-context";
 import { wedding } from "@/lib/wedding";
 
@@ -11,17 +11,7 @@ export function GiftSection() {
     <section id="gift" className="wash-section relative px-6 py-24 md:px-10">
       <div className="watercolor-grain pointer-events-none absolute inset-0 opacity-25" />
       <div className="relative mx-auto grid max-w-5xl gap-12 md:grid-cols-2 md:items-center">
-        <div className="bleed-frame bleed-frame--soft">
-          <div className="relative aspect-[4/3] overflow-hidden bg-[color:var(--wash-soft)]">
-            <Image
-              src={wedding.images.china.src}
-              alt=""
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
-          </div>
-        </div>
+        <PhotoFrame src={wedding.images.china.src} alt="" />
         <div className="md:pl-2">
           <h2 className="font-[family-name:var(--font-display)] text-4xl font-light md:text-5xl">
             {t("giftTitle")}

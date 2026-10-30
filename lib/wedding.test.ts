@@ -20,7 +20,7 @@ describe("wedding config", () => {
     assert.match(whatsappHref("ciao"), /^https:\/\/wa\.me\/393425253645\?text=/);
   });
 
-  it("opens Masseria then couple (landscape assets)", () => {
+  it("has Masseria and couple image assets", () => {
     assert.equal(wedding.images.masseria.src, "/masseria-spina.jpg");
     assert.equal(wedding.images.couple.src, "/couple-hero.jpg");
   });
