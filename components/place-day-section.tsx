@@ -52,7 +52,7 @@ export function PlaceDaySection() {
             <div className="mt-3 w-full">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`${wedding.images.timeline.src}?v=20261030d`}
+                src={`${wedding.images.timeline.src}?v=20261030e`}
                 alt={wedding.images.timeline.alt}
                 width={wedding.images.timeline.width}
                 height={wedding.images.timeline.height}
