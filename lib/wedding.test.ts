@@ -39,21 +39,24 @@ describe("i18n dictionaries", () => {
   it("has real English strings distinct from Italian", () => {
     assert.equal(messages.en.placeDayTitle, "Place & day");
     assert.equal(messages.it.placeDayTitle, "Luogo e giorno");
-    assert.equal(messages.en.coupleTitle, "The couple");
-    assert.equal(messages.it.coupleTitle, "Gli sposi");
+    assert.ok(!("coupleTitle" in messages.it));
     assert.ok(!("rsvpGuests" in messages.en));
     assert.ok(!("heroDate" in messages.it));
     assert.ok(!("dayFlowValue" in messages.it));
     assert.ok(!("dayWhereValue" in messages.it));
+    assert.match(
+      messages.it.rsvpLead,
+      /Rispondete il prima possibile/,
+    );
+    assert.match(messages.en.rsvpLead, /as soon as you can/i);
   });
 });
 
 describe("china photo asset", () => {
-  it("is landscape (width greater than height)", async () => {
+  it("source file remains landscape (rotated 90° in CSS for vertical display)", async () => {
     const { readFileSync } = await import("node:fs");
     const { join } = await import("node:path");
     const buf = readFileSync(join(process.cwd(), "public/couple-china.jpg"));
-    // JPEG SOF0/2: scan for dimensions
     let i = 2;
     let width = 0;
     let height = 0;
@@ -69,6 +72,6 @@ describe("china photo asset", () => {
       }
       i += 2 + len;
     }
-    assert.ok(width > height, `expected landscape, got ${width}x${height}`);
+    assert.ok(width > height, `expected landscape source, got ${width}x${height}`);
   });
 });

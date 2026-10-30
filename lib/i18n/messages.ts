@@ -20,7 +20,6 @@ export const messages = {
     dayWhereLabel: "Dove",
     dayFlowLabel: "Programma",
     venueLink: "Sito della Masseria",
-    coupleTitle: "Gli sposi",
     stayTitle: "Alloggio",
     stayLead:
       "Per consigli su dove dormire vicino alla Masseria, scriveteci su WhatsApp: siamo felici di aiutarvi.",
@@ -32,7 +31,8 @@ export const messages = {
       "Se desiderate farci un regalo, un contributo al nostro viaggio è il gesto che più ci fa piacere.",
     giftIbanLabel: "IBAN",
     rsvpTitle: "RSVP",
-    rsvpLead: "Diteci se potrete esserci. Rispondete entro il 1° luglio 2027.",
+    rsvpLead:
+      "Diteci se potrete esserci. Rispondete il prima possibile per aiutarci a organizzare al meglio. Grazie mille!",
     rsvpName: "Nome e cognome",
     rsvpEmail: "Email",
     rsvpAttend: "Parteciperete?",
@@ -65,7 +65,6 @@ export const messages = {
     dayWhereLabel: "Where",
     dayFlowLabel: "Program",
     venueLink: "Masseria website",
-    coupleTitle: "The couple",
     stayTitle: "Where to stay",
     stayLead:
       "For tips on lodging near the Masseria, message us on WhatsApp — happy to help.",
@@ -77,7 +76,8 @@ export const messages = {
       "If you wish to give a gift, a contribution toward our trip means the most to us.",
     giftIbanLabel: "IBAN",
     rsvpTitle: "RSVP",
-    rsvpLead: "Let us know if you can join. Please reply by 1 July 2027.",
+    rsvpLead:
+      "Please let us know if you can join. Reply as soon as you can so we can plan everything properly. Thank you so much!",
     rsvpName: "Full name",
     rsvpEmail: "Email",
     rsvpAttend: "Will you attend?",
