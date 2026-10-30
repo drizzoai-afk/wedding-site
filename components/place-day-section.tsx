@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { SectionTitle } from "@/components/section-title";
 import { useLocale } from "@/lib/i18n/locale-context";
 import { venueAddressBlock, wedding } from "@/lib/wedding";
@@ -49,14 +48,16 @@ export function PlaceDaySection() {
             <p className="text-xs tracking-[0.2em] text-primary/80 uppercase">
               {t("dayFlowLabel")}
             </p>
-            <div className="mt-6 w-full overflow-x-auto">
-              <Image
-                src={wedding.images.timeline.src}
+            {/* Same content column / scale as the Masseria address line */}
+            <div className="mt-3 w-full">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`${wedding.images.timeline.src}?v=20261030e`}
                 alt={wedding.images.timeline.alt}
                 width={wedding.images.timeline.width}
                 height={wedding.images.timeline.height}
-                className="mx-auto h-auto w-full max-w-4xl"
-                sizes="(max-width: 896px) 100vw, 896px"
+                className="mx-auto h-auto w-full max-w-2xl"
+                decoding="async"
               />
             </div>
           </div>

@@ -36,10 +36,10 @@ export const wedding = {
     },
     /** Horizontal bilingual program timeline */
     timeline: {
-      src: "/program-timeline.png",
+      src: "/program-timeline-v3.png",
       alt: "Rito simbolico · Aperitivo · Cena · Taglio della torta · Dj Set",
-      width: 1800,
-      height: 491,
+      width: 1451,
+      height: 359,
     },
     /** Couple photo in China section — landscape, horizon horizontal */
     china: {
