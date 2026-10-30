@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, EB_Garamond } from "next/font/google";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import { LocaleProvider } from "@/lib/i18n/locale-context";
 import { coupleNames } from "@/lib/wedding";
 import "./globals.css";
@@ -27,7 +28,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="it" className={`${display.variable} ${body.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-[family-name:var(--font-body)]">
-        <LocaleProvider>{children}</LocaleProvider>
+        <SmoothScroll>
+          <LocaleProvider>{children}</LocaleProvider>
+        </SmoothScroll>
       </body>
     </html>
   );

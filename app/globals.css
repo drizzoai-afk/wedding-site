@@ -245,59 +245,9 @@
   }
 }
 
-@keyframes flora-sway {
-  from {
-    transform: rotate(-1.4deg) translate3d(0, 0, 0);
-  }
-  to {
-    transform: rotate(1.6deg) translate3d(0, -0.6%, 0);
-  }
-}
-
-@keyframes flora-bloom {
-  from {
-    opacity: 0.82;
-    transform: scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1.03);
-  }
-}
-
 .animate-hero-drift {
   animation: hero-drift 30s ease-in-out alternate infinite;
   will-change: transform;
-}
-
-.hero-flora-sway,
-.hero-flora-sway-slow {
-  transform-box: fill-box;
-  transform-origin: center bottom;
-  will-change: transform;
-}
-
-.hero-flora-sway {
-  animation: flora-sway 11s ease-in-out alternate infinite;
-}
-
-.hero-flora-sway-slow {
-  animation: flora-sway 15s ease-in-out alternate-reverse infinite;
-}
-
-.hero-flora-bloom,
-.hero-flora-bloom-delay {
-  transform-box: fill-box;
-  transform-origin: center;
-  will-change: opacity, transform;
-}
-
-.hero-flora-bloom {
-  animation: flora-bloom 7s ease-in-out alternate infinite;
-}
-
-.hero-flora-bloom-delay {
-  animation: flora-bloom 9s ease-in-out alternate-reverse infinite 1.2s;
 }
 
 .animate-rise-1 {
@@ -315,10 +265,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-hero-drift,
-  .hero-flora-sway,
-  .hero-flora-sway-slow,
-  .hero-flora-bloom,
-  .hero-flora-bloom-delay,
   .animate-rise-1,
   .animate-rise-2,
   .animate-rise-3,

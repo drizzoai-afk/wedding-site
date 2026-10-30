@@ -27,7 +27,7 @@ export function Hero() {
         className="watercolor-grain absolute inset-0 -z-10 opacity-[0.22]"
       />
 
-      <div className="mx-auto flex min-h-[88svh] w-full max-w-5xl flex-col items-center justify-center px-6 pb-16 pt-28 text-center md:px-10">
+      <div className="relative z-10 mx-auto flex min-h-[88svh] w-full max-w-5xl flex-col items-center justify-center px-6 pb-16 pt-28 text-center md:px-10">
         <p className="animate-rise-1 mb-7 font-[family-name:var(--font-display)] text-sm tracking-[0.32em] text-[color:var(--terracotta)] italic uppercase md:text-base">
           {t("heroEyebrow")}
         </p>
