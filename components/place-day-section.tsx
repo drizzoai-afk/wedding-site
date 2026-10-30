@@ -49,15 +49,15 @@ export function PlaceDaySection() {
             <p className="text-xs tracking-[0.2em] text-primary/80 uppercase">
               {t("dayFlowLabel")}
             </p>
-            {/* Wider than the copy column so thin line-art labels stay readable */}
-            <div className="relative left-1/2 mt-8 w-screen max-w-[100vw] -translate-x-1/2 overflow-x-auto px-4 md:px-8">
+            {/* Wider than copy column but always ≤ viewport — no horizontal scroll */}
+            <div className="relative left-1/2 mt-8 w-[min(100vw-2rem,72rem)] -translate-x-1/2">
               <Image
                 src={wedding.images.timeline.src}
                 alt={wedding.images.timeline.alt}
                 width={wedding.images.timeline.width}
                 height={wedding.images.timeline.height}
-                className="mx-auto h-auto w-[min(100%,80rem)] min-w-[48rem] sm:min-w-[56rem] md:min-w-0 md:max-w-7xl"
-                sizes="(max-width: 768px) 768px, (max-width: 1280px) 1024px, 1280px"
+                className="mx-auto h-auto w-full"
+                sizes="(max-width: 1152px) calc(100vw - 2rem), 72rem"
                 priority={false}
               />
             </div>
