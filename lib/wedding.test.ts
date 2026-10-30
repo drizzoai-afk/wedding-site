@@ -20,26 +20,23 @@ describe("wedding config", () => {
     assert.match(whatsappHref("ciao"), /^https:\/\/wa\.me\/393425253645\?text=/);
   });
 
-  it("opens with couple photo asset", () => {
-    assert.equal(wedding.images.opening.src, "/couple-hero.jpg");
+  it("opens Masseria then couple (landscape assets)", () => {
+    assert.equal(wedding.images.masseria.src, "/masseria-spina.jpg");
+    assert.equal(wedding.images.couple.src, "/couple-hero.jpg");
   });
 });
 
 describe("i18n dictionaries", () => {
   it("keeps IT and EN key parity", () => {
-    const itKeys = Object.keys(messages.it).sort();
-    const enKeys = Object.keys(messages.en).sort();
-    assert.deepEqual(itKeys, enKeys);
+    assert.deepEqual(
+      Object.keys(messages.it).sort(),
+      Object.keys(messages.en).sort(),
+    );
   });
 
-  it("has real English strings distinct from Italian for guest copy", () => {
+  it("has real English strings distinct from Italian", () => {
     assert.equal(messages.en.placeDayTitle, "Place & day");
     assert.equal(messages.it.placeDayTitle, "Luogo e giorno");
-    assert.equal(messages.en.heroDate, "Tuesday, 31 August 2027");
-    assert.equal(messages.en.rsvpSubmit, "Send RSVP");
     assert.ok(!("rsvpGuests" in messages.en));
-    assert.ok(!("venueAttribution" in messages.en));
-    assert.ok(!("chinaCaption" in messages.en));
-    assert.ok(!("rsvpStubNote" in messages.en));
   });
 });

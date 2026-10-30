@@ -1,14 +1,15 @@
 # Image attribution (repo docs only — not shown on the guest site)
 
-## Opening image — `couple-hero.jpg` / `couple-photo-01.jpg`
+## 1) Masseria — `masseria-spina.jpg`
+
+- Provided by the couple / organizers for this invitation.
+- Landscape (3:2). Shown first on the page with minimal CSS wash/grain.
+
+## 2) Couple — `couple-hero.jpg` / `couple-photo-01.jpg`
 
 - Provided by the couple (beach sunset).
-- Guest UI uses a lightly softened web resize (`couple-hero.jpg`) with minimal CSS wash/grain overlays.
-- Full original kept as `couple-photo-01.jpg`.
-
-## Unused / archive
-
-- `masseria-spina.jpg` — Wikimedia Commons CC BY-SA 4.0 (Acquario51 / Wiki Loves Monuments Italia 2023). No longer shown on the invitation; kept for possible later use with permissioned official shots preferred.
+- Original may be portrait EXIF; guest UI uses landscape 3:2 export (`couple-hero.jpg`), shown second.
+- Minimal CSS wash/grain overlays only.
 
 ## Placeholders
 

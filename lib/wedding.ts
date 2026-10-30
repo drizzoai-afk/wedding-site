@@ -22,8 +22,13 @@ export const wedding = {
   /** Replace with the couple’s real IBAN when ready (repo only — not labeled as placeholder in UI) */
   ibanPlaceholder: "IT00 X000 0000 0000 0000 0000 000",
   images: {
-    /** Opening image — couple beach sunset with minimal acquerello presentation */
-    opening: {
+    /** 1) Opening — Masseria Spina (landscape) */
+    masseria: {
+      src: "/masseria-spina.jpg",
+      alt: "Masseria Spina Resort, Monopoli",
+    },
+    /** 2) Couple beach sunset (landscape presentation) */
+    couple: {
       src: "/couple-hero.jpg",
       alt: "Daniele e Andrea",
     },
