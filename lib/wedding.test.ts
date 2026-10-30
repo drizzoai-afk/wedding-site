@@ -21,7 +21,7 @@ describe("wedding config", () => {
   });
 
   it("has Masseria and couple image assets", () => {
-    assert.equal(wedding.images.masseria.src, "/masseria-spina.jpg");
+    assert.equal(wedding.images.masseria.src, "/masseria-evening.webp");
     assert.equal(wedding.images.couple.src, "/couple-hero.jpg");
   });
 });
@@ -38,5 +38,18 @@ describe("i18n dictionaries", () => {
     assert.equal(messages.en.placeDayTitle, "Place & day");
     assert.equal(messages.it.placeDayTitle, "Luogo e giorno");
     assert.ok(!("rsvpGuests" in messages.en));
+    assert.ok(!("heroSub" in messages.it));
+    assert.ok(!("placeDayLead" in messages.it));
+  });
+
+  it("uses the confirmed program line in both locales", () => {
+    assert.equal(
+      messages.it.dayFlowValue,
+      "Rito simbolico · Aperitivo · Cena · Taglio della torta · Dj Set",
+    );
+    assert.equal(
+      messages.en.dayFlowValue,
+      "Symbolic ceremony · Aperitif · Dinner · Cake cutting · DJ set",
+    );
   });
 });

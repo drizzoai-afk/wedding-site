@@ -21,9 +21,6 @@ export function PlaceDaySection() {
           {t("placeDayTitle")}
         </h2>
         <div className="horizon-rule mx-auto mt-8 max-w-xs" aria-hidden />
-        <p className="mt-8 text-base leading-relaxed text-muted-foreground md:text-lg">
-          {t("placeDayLead")}
-        </p>
 
         <dl className="mt-14 space-y-9 text-left sm:mx-auto sm:max-w-md">
           {rows.map((row) => (

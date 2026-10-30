@@ -13,18 +13,16 @@ export const messages = {
     heroEyebrow: "Vi aspettiamo",
     heroAnd: "e",
     heroDate: "Martedì 31 agosto 2027",
-    heroSub: "Rito simbolico alle 18:30 · poi festa",
     ctaRsvp: "Conferma presenza",
     ctaDetails: "Luogo e giorno",
     placeDayTitle: "Luogo e giorno",
-    placeDayLead:
-      "Un rito simbolico al tramonto, poi festa insieme alla Masseria Spina Resort.",
     dayWhenLabel: "Quando",
     dayWhenValue: "Martedì 31 agosto 2027 · rito alle 18:30",
     dayWhereLabel: "Dove",
     dayWhereValue: "Masseria Spina Resort · Monopoli (BA)",
     dayFlowLabel: "Programma",
-    dayFlowValue: "Rito simbolico · poi festa nello stesso luogo",
+    dayFlowValue:
+      "Rito simbolico · Aperitivo · Cena · Taglio della torta · Dj Set",
     venueLink: "Sito della Masseria",
     stayTitle: "Alloggio",
     stayLead:
@@ -63,18 +61,16 @@ export const messages = {
     heroEyebrow: "Join us",
     heroAnd: "and",
     heroDate: "Tuesday, 31 August 2027",
-    heroSub: "Symbolic ceremony at 18:30 · then the party",
     ctaRsvp: "RSVP",
     ctaDetails: "Place & day",
     placeDayTitle: "Place & day",
-    placeDayLead:
-      "A symbolic ceremony at sunset, then a party together at Masseria Spina Resort.",
     dayWhenLabel: "When",
     dayWhenValue: "Tuesday, 31 August 2027 · ceremony at 18:30",
     dayWhereLabel: "Where",
     dayWhereValue: "Masseria Spina Resort · Monopoli (BA)",
-    dayFlowLabel: "Flow",
-    dayFlowValue: "Symbolic ceremony · then party at the same venue",
+    dayFlowLabel: "Program",
+    dayFlowValue:
+      "Symbolic ceremony · Aperitif · Dinner · Cake cutting · DJ set",
     venueLink: "Masseria website",
     stayTitle: "Where to stay",
     stayLead:
