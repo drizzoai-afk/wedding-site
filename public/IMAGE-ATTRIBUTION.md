@@ -1,16 +1,24 @@
 # Image attribution (repo docs only — not shown on the guest site)
 
-## 1) Masseria — `masseria-evening.webp`
+## 1) Logo — `masseria-wedding-logo.png`
 
-- Provided by the couple / organizers for this invitation.
-- Shown vertically (3:4 crop) immediately after the paper hero — no bleed/China frame.
-- Legacy landscape file `masseria-spina.jpg` may remain unused.
+- Approved Masseria + date mark (transparent PNG).
+- Shown in the paper hero (replaces text date).
 
-## 2) Couple — `couple-hero.jpg` / `couple-photo-01.jpg`
+## 2) Masseria bleed — `masseria-hero-bleed.jpg`
 
-- Provided by the couple (beach sunset).
-- Guest UI uses landscape export in the shared soft PhotoFrame (same as China).
+- Provided by the couple / organizers.
+- Full viewport width immediately after the hero.
+
+## 3) Program — `program-timeline.png`
+
+- Approved bilingual horizontal timeline graphic (transparent PNG).
+
+## 4) China / couple — `couple-china.jpg`
+
+- Vertical crop from couple photo (`couple-photo-01.jpg` / `couple-hero.jpg`).
+- Used in the China gift section PhotoFrame (portrait).
 
 ## Placeholders
 
-- `placeholders/china.svg` — temporary until China photo is supplied.
+- Couple/sposi section uses an empty framed placeholder (photo moved to China).

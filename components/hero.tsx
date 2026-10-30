@@ -1,12 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { useLocale } from "@/lib/i18n/locale-context";
 import { cn } from "@/lib/utils";
 import { coupleNames, wedding } from "@/lib/wedding";
 
-/** Paper/wash hero — no photo background. Names + date only. */
+/** Paper/wash hero — names + transparent Masseria/date logo (no text date). */
 export function Hero() {
   const { t } = useLocale();
 
@@ -29,7 +30,7 @@ export function Hero() {
           {t("heroEyebrow")}
         </p>
 
-        <h1 className="animate-rise-2 font-[family-name:var(--font-display)] text-[clamp(3.4rem,13vw,7.5rem)] leading-[0.9] font-light tracking-[-0.02em] text-balance text-[color:var(--brown)]">
+        <h1 className="animate-rise-2 font-[family-name:var(--font-display)] text-[clamp(3.2rem,12vw,6.5rem)] leading-[0.9] font-light tracking-[-0.02em] text-balance text-[color:var(--brown)]">
           <span className="block">{wedding.partnerOne}</span>
           <span
             aria-hidden
@@ -40,11 +41,16 @@ export function Hero() {
           <span className="block">{wedding.partnerTwo}</span>
         </h1>
 
-        <div className="animate-rise-3 horizon-rule mt-8 w-40 max-w-[40%]" aria-hidden />
-
-        <p className="animate-rise-3 mt-8 max-w-xl text-base text-[color:var(--ink)] md:text-lg">
-          {t("heroDate")}
-        </p>
+        <div className="animate-rise-3 mt-8 w-full max-w-[14rem] sm:max-w-[16rem] md:max-w-[18rem]">
+          <Image
+            src={wedding.images.logo.src}
+            alt={wedding.images.logo.alt}
+            width={wedding.images.logo.width}
+            height={wedding.images.logo.height}
+            priority
+            className="mx-auto h-auto w-full"
+          />
+        </div>
 
         <div className="animate-rise-4 mt-10 flex flex-wrap items-center justify-center gap-3">
           <Link

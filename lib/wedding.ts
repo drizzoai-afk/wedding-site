@@ -22,18 +22,29 @@ export const wedding = {
   /** Replace with the couple’s real IBAN when ready (repo only — not labeled as placeholder in UI) */
   ibanPlaceholder: "IT00 X000 0000 0000 0000 0000 000",
   images: {
-    /** After hero — Masseria evening (shown vertical, no frame) */
+    /** Transparent Masseria + date mark for the paper hero */
+    logo: {
+      src: "/masseria-wedding-logo.png",
+      alt: "Masseria Spina Resort · 31 agosto 2027 · Monopoli",
+      width: 1002,
+      height: 1547,
+    },
+    /** Full-bleed Masseria immediately after hero */
     masseria: {
-      src: "/masseria-evening.webp",
+      src: "/masseria-hero-bleed.jpg",
       alt: "Masseria Spina Resort, Monopoli",
     },
-    /** Couple beach sunset — China-style PhotoFrame */
-    couple: {
-      src: "/couple-hero.jpg",
-      alt: "Daniele e Andrea",
+    /** Horizontal bilingual program timeline */
+    timeline: {
+      src: "/program-timeline.png",
+      alt: "Rito simbolico · Aperitivo · Cena · Taglio della torta · Dj Set",
+      width: 1800,
+      height: 491,
     },
+    /** Couple photo reserved for China section (vertical crop) */
     china: {
-      src: "/placeholders/china.svg",
+      src: "/couple-china.jpg",
+      alt: "Daniele e Andrea",
     },
   },
 } as const;

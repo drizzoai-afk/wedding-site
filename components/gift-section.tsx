@@ -11,7 +11,13 @@ export function GiftSection() {
     <section id="gift" className="wash-section relative px-6 py-24 md:px-10">
       <div className="watercolor-grain pointer-events-none absolute inset-0 opacity-25" />
       <div className="relative mx-auto grid max-w-5xl gap-12 md:grid-cols-2 md:items-center">
-        <PhotoFrame src={wedding.images.china.src} alt="" />
+        <div className="mx-auto w-full max-w-sm md:mx-0">
+          <PhotoFrame
+            src={wedding.images.china.src}
+            alt={wedding.images.china.alt}
+            aspect="portrait"
+          />
+        </div>
         <div className="md:pl-2">
           <h2 className="font-[family-name:var(--font-display)] text-4xl font-light md:text-5xl">
             {t("giftTitle")}

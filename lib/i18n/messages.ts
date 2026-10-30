@@ -12,7 +12,6 @@ export const messages = {
     langLabel: "Lingua",
     heroEyebrow: "Vi aspettiamo",
     heroAnd: "e",
-    heroDate: "Martedì 31 agosto 2027",
     ctaRsvp: "Conferma presenza",
     ctaDetails: "Luogo e giorno",
     placeDayTitle: "Luogo e giorno",
@@ -21,9 +20,8 @@ export const messages = {
     dayWhereLabel: "Dove",
     dayWhereValue: "Masseria Spina Resort · Monopoli (BA)",
     dayFlowLabel: "Programma",
-    dayFlowValue:
-      "Rito simbolico · Aperitivo · Cena · Taglio della torta · Dj Set",
     venueLink: "Sito della Masseria",
+    coupleTitle: "Gli sposi",
     stayTitle: "Alloggio",
     stayLead:
       "Per consigli su dove dormire vicino alla Masseria, scriveteci su WhatsApp: siamo felici di aiutarvi.",
@@ -60,7 +58,6 @@ export const messages = {
     langLabel: "Language",
     heroEyebrow: "Join us",
     heroAnd: "and",
-    heroDate: "Tuesday, 31 August 2027",
     ctaRsvp: "RSVP",
     ctaDetails: "Place & day",
     placeDayTitle: "Place & day",
@@ -69,9 +66,8 @@ export const messages = {
     dayWhereLabel: "Where",
     dayWhereValue: "Masseria Spina Resort · Monopoli (BA)",
     dayFlowLabel: "Program",
-    dayFlowValue:
-      "Symbolic ceremony · Aperitif · Dinner · Cake cutting · DJ set",
     venueLink: "Masseria website",
+    coupleTitle: "The couple",
     stayTitle: "Where to stay",
     stayLead:
       "For tips on lodging near the Masseria, message us on WhatsApp — happy to help.",

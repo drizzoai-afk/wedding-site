@@ -1,22 +1,22 @@
 "use client";
 
+import Image from "next/image";
 import { useLocale } from "@/lib/i18n/locale-context";
 import { venueAddressBlock, wedding } from "@/lib/wedding";
 
-/** Single guest section: place + day together. */
+/** Single guest section: place + day + visual program timeline. */
 export function PlaceDaySection() {
   const { t } = useLocale();
 
   const rows = [
     { label: t("dayWhenLabel"), value: t("dayWhenValue") },
     { label: t("dayWhereLabel"), value: t("dayWhereValue") },
-    { label: t("dayFlowLabel"), value: t("dayFlowValue") },
   ];
 
   return (
     <section id="place-day" className="wash-section relative px-6 py-24 md:px-10">
       <div className="watercolor-grain pointer-events-none absolute inset-0 opacity-25" />
-      <div className="relative mx-auto max-w-2xl text-center">
+      <div className="relative mx-auto max-w-4xl text-center">
         <h2 className="font-[family-name:var(--font-display)] text-4xl font-light tracking-tight md:text-5xl">
           {t("placeDayTitle")}
         </h2>
@@ -35,7 +35,21 @@ export function PlaceDaySection() {
           ))}
         </dl>
 
-        <address className="mt-12 not-italic text-muted-foreground">
+        <div className="mt-16 w-full overflow-x-auto">
+          <p className="mb-6 text-xs tracking-[0.2em] text-primary/80 uppercase">
+            {t("dayFlowLabel")}
+          </p>
+          <Image
+            src={wedding.images.timeline.src}
+            alt={wedding.images.timeline.alt}
+            width={wedding.images.timeline.width}
+            height={wedding.images.timeline.height}
+            className="mx-auto h-auto w-full max-w-4xl"
+            sizes="(max-width: 896px) 100vw, 896px"
+          />
+        </div>
+
+        <address className="mt-14 not-italic text-muted-foreground">
           <p className="font-[family-name:var(--font-display)] text-xl text-[color:var(--ink)]">
             {wedding.venue.name}
           </p>

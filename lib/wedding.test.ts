@@ -20,9 +20,11 @@ describe("wedding config", () => {
     assert.match(whatsappHref("ciao"), /^https:\/\/wa\.me\/393425253645\?text=/);
   });
 
-  it("has Masseria and couple image assets", () => {
-    assert.equal(wedding.images.masseria.src, "/masseria-evening.webp");
-    assert.equal(wedding.images.couple.src, "/couple-hero.jpg");
+  it("points at logo, full-bleed Masseria, timeline, and China couple photo", () => {
+    assert.equal(wedding.images.logo.src, "/masseria-wedding-logo.png");
+    assert.equal(wedding.images.masseria.src, "/masseria-hero-bleed.jpg");
+    assert.equal(wedding.images.timeline.src, "/program-timeline.png");
+    assert.equal(wedding.images.china.src, "/couple-china.jpg");
   });
 });
 
@@ -37,19 +39,10 @@ describe("i18n dictionaries", () => {
   it("has real English strings distinct from Italian", () => {
     assert.equal(messages.en.placeDayTitle, "Place & day");
     assert.equal(messages.it.placeDayTitle, "Luogo e giorno");
+    assert.equal(messages.en.coupleTitle, "The couple");
+    assert.equal(messages.it.coupleTitle, "Gli sposi");
     assert.ok(!("rsvpGuests" in messages.en));
-    assert.ok(!("heroSub" in messages.it));
-    assert.ok(!("placeDayLead" in messages.it));
-  });
-
-  it("uses the confirmed program line in both locales", () => {
-    assert.equal(
-      messages.it.dayFlowValue,
-      "Rito simbolico · Aperitivo · Cena · Taglio della torta · Dj Set",
-    );
-    assert.equal(
-      messages.en.dayFlowValue,
-      "Symbolic ceremony · Aperitif · Dinner · Cake cutting · DJ set",
-    );
+    assert.ok(!("heroDate" in messages.it));
+    assert.ok(!("dayFlowValue" in messages.it));
   });
 });
