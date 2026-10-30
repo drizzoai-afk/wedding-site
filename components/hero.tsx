@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { HeroFlora } from "@/components/hero-flora";
 import { buttonVariants } from "@/components/ui/button";
 import { useLocale } from "@/lib/i18n/locale-context";
 import { cn } from "@/lib/utils";
@@ -20,6 +21,7 @@ export function Hero() {
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_55%_at_70%_0%,color-mix(in_srgb,var(--sun)_28%,transparent),transparent_55%),radial-gradient(ellipse_60%_45%_at_10%_20%,color-mix(in_srgb,var(--sand-1)_90%,transparent),transparent_50%),linear-gradient(180deg,var(--sand-0)_0%,var(--sand-1)_70%,color-mix(in_srgb,var(--sand-2)_40%,var(--sand-1))_100%)]"
       />
+      <HeroFlora />
       <div
         aria-hidden
         className="watercolor-grain absolute inset-0 -z-10 opacity-[0.22]"
