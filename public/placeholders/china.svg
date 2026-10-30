@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200">
+  <defs>
+    <linearGradient id="g" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d9e0dc"/>
+      <stop offset="100%" stop-color="#b7c4bc"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#g)"/>
+  <rect x="80" y="80" width="1440" height="1040" fill="none" stroke="#7a2e2a" stroke-opacity="0.25" stroke-width="2"/>
+  <text x="800" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="42" fill="#5c2a26">Foto dalla Cina</text>
+  <text x="800" y="620" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#6b5348">Placeholder — sostituire con la foto della Cina</text>
+</svg>

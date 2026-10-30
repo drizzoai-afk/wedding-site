@@ -1,0 +1,264 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-body);
+  --font-heading: var(--font-display);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /*
+   * style10 Mediterranean invitation palette
+   * https://wyx-sg.github.io/wedding-invitation-skill/invitations/style10-mediterranean.html
+   * Accent: terracotta #c4683a (aligns with Masseria Spina red walls)
+   */
+  --sand-0: #f4ead8;
+  --sand-1: #ecd9b8;
+  --sand-2: #d4a37a;
+  --terracotta: #c4683a;
+  --sun: #f4a05a;
+  --olive: #5a7a5e;
+  --ink: #2c4a3e;
+  --brown: #5a3a28;
+  --gold: #c89968;
+  --horizon: #8b5a3e;
+  --outer: #1a2a26;
+
+  --paper: var(--sand-0);
+  --wash-soft: color-mix(in srgb, var(--sand-1) 70%, white);
+  --wash-edge: color-mix(in srgb, var(--sand-2) 45%, var(--sand-0));
+
+  --background: var(--sand-0);
+  --foreground: var(--brown);
+  --card: color-mix(in srgb, var(--sand-0) 88%, white);
+  --card-foreground: var(--brown);
+  --popover: color-mix(in srgb, var(--sand-0) 88%, white);
+  --popover-foreground: var(--brown);
+  --primary: var(--terracotta);
+  --primary-foreground: #fff8f0;
+  --secondary: color-mix(in srgb, var(--sand-1) 80%, white);
+  --secondary-foreground: var(--ink);
+  --muted: color-mix(in srgb, var(--sand-1) 65%, white);
+  --muted-foreground: var(--olive);
+  --accent: color-mix(in srgb, var(--olive) 18%, var(--sand-0));
+  --accent-foreground: var(--ink);
+  --destructive: #9a3b2e;
+  --border: color-mix(in srgb, var(--horizon) 28%, var(--sand-0));
+  --input: color-mix(in srgb, var(--horizon) 22%, var(--sand-0));
+  --ring: var(--terracotta);
+  --chart-1: var(--terracotta);
+  --chart-2: var(--olive);
+  --chart-3: var(--gold);
+  --chart-4: var(--sand-2);
+  --chart-5: var(--ink);
+  --radius: 0.4rem;
+  --sidebar: var(--sand-0);
+  --sidebar-foreground: var(--brown);
+  --sidebar-primary: var(--terracotta);
+  --sidebar-primary-foreground: #fff8f0;
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--terracotta);
+}
+
+.dark {
+  --background: var(--outer);
+  --foreground: var(--sand-0);
+  --card: #243530;
+  --card-foreground: var(--sand-0);
+  --popover: #243530;
+  --popover-foreground: var(--sand-0);
+  --primary: var(--sun);
+  --primary-foreground: var(--outer);
+  --secondary: #2c4038;
+  --secondary-foreground: var(--sand-0);
+  --muted: #2c4038;
+  --muted-foreground: color-mix(in srgb, var(--sand-1) 70%, var(--olive));
+  --accent: #334840;
+  --accent-foreground: var(--sand-0);
+  --destructive: #d47468;
+  --border: color-mix(in srgb, var(--sand-0) 14%, transparent);
+  --input: color-mix(in srgb, var(--sand-0) 16%, transparent);
+  --ring: var(--gold);
+  --chart-1: var(--sun);
+  --chart-2: var(--gold);
+  --chart-3: var(--olive);
+  --chart-4: var(--sand-2);
+  --chart-5: var(--sand-0);
+  --sidebar: #243530;
+  --sidebar-foreground: var(--sand-0);
+  --sidebar-primary: var(--sun);
+  --sidebar-primary-foreground: var(--outer);
+  --sidebar-accent: #334840;
+  --sidebar-accent-foreground: var(--sand-0);
+  --sidebar-border: color-mix(in srgb, var(--sand-0) 14%, transparent);
+  --sidebar-ring: var(--gold);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Same wash as the hero — fixed so every section matches */
+    background-color: var(--sand-0);
+    background-image:
+      radial-gradient(ellipse 80% 55% at 70% 0%, color-mix(in srgb, var(--sun) 28%, transparent), transparent 55%),
+      radial-gradient(ellipse 60% 45% at 10% 20%, color-mix(in srgb, var(--sand-1) 90%, transparent), transparent 50%),
+      linear-gradient(180deg, var(--sand-0) 0%, var(--sand-1) 70%, color-mix(in srgb, var(--sand-2) 40%, var(--sand-1)) 100%);
+    background-attachment: fixed;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+/* Paper grain — refined invitation texture */
+.watercolor-grain {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.28 0 0 0 0 0.18 0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 180px 180px;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.watercolor-bleed {
+  background:
+    radial-gradient(ellipse 88% 72% at 50% 42%, transparent 42%, color-mix(in srgb, var(--brown) 28%, transparent) 100%),
+    linear-gradient(180deg, color-mix(in srgb, var(--terracotta) 18%, transparent), transparent 22%, transparent 72%, color-mix(in srgb, var(--ink) 30%, transparent));
+  pointer-events: none;
+}
+
+/* Sections stay transparent so the shared body/hero gradient shows through */
+.wash-section,
+.wash-section--alt {
+  background: transparent;
+}
+
+.horizon-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--horizon) 20%,
+    var(--horizon) 80%,
+    transparent 100%
+  );
+  opacity: 0.35;
+}
+
+.bleed-frame {
+  position: relative;
+  padding: 0.35rem;
+  background:
+    radial-gradient(120% 90% at 20% 15%, color-mix(in srgb, var(--sand-2) 35%, transparent), transparent 55%),
+    radial-gradient(100% 80% at 85% 80%, color-mix(in srgb, var(--olive) 18%, transparent), transparent 50%),
+    color-mix(in srgb, var(--sand-0) 70%, white);
+  border-radius: 42% 58% 48% 52% / 48% 42% 58% 52%;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--horizon) 20%, transparent);
+}
+
+.bleed-frame > div:first-child,
+.bleed-frame > .relative {
+  border-radius: 40% 60% 45% 55% / 50% 40% 60% 50%;
+}
+
+.bleed-frame--soft {
+  border-radius: 28% 72% 35% 65% / 55% 30% 70% 45%;
+}
+
+.bleed-frame--soft > div:first-child,
+.bleed-frame--soft > .relative {
+  border-radius: 30% 70% 38% 62% / 52% 35% 65% 48%;
+}
+
+@keyframes hero-drift {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.1) translate3d(0, -1%, 0);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-hero-drift {
+  animation: hero-drift 30s ease-in-out alternate infinite;
+  will-change: transform;
+}
+
+.animate-rise-1 {
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+}
+.animate-rise-2 {
+  animation: rise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+.animate-rise-3 {
+  animation: rise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.34s both;
+}
+.animate-rise-4 {
+  animation: rise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.48s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-drift,
+  .animate-rise-1,
+  .animate-rise-2,
+  .animate-rise-3,
+  .animate-rise-4 {
+    animation: none;
+  }
+}
