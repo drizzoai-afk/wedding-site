@@ -56,8 +56,8 @@ export function PlaceDaySection() {
                 alt={wedding.images.timeline.alt}
                 width={wedding.images.timeline.width}
                 height={wedding.images.timeline.height}
-                className="mx-auto h-auto w-[min(100%,72rem)] min-w-[40rem] sm:min-w-[52rem] md:min-w-0 md:max-w-6xl lg:max-w-7xl"
-                sizes="(max-width: 640px) 640px, (max-width: 1024px) 896px, 1280px"
+                className="mx-auto h-auto w-[min(100%,80rem)] min-w-[48rem] sm:min-w-[56rem] md:min-w-0 md:max-w-7xl"
+                sizes="(max-width: 768px) 768px, (max-width: 1280px) 1024px, 1280px"
                 priority={false}
               />
             </div>
