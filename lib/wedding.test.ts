@@ -70,7 +70,7 @@ describe("i18n dictionaries", () => {
 });
 
 describe("china photo asset", () => {
-  it("source file remains landscape (rotated 90° in CSS for vertical display)", async () => {
+  it("source is pre-oriented for CSS 90° CW frame+content rotate", async () => {
     const { readFileSync } = await import("node:fs");
     const { join } = await import("node:path");
     const buf = readFileSync(join(process.cwd(), "public/couple-china.jpg"));
@@ -89,6 +89,7 @@ describe("china photo asset", () => {
       }
       i += 2 + len;
     }
-    assert.ok(width > height, `expected landscape source, got ${width}x${height}`);
+    // Pre-rotated (taller than wide) so CSS rotate(90deg) CW yields upright horizon
+    assert.ok(height > width, `expected pre-oriented portrait asset, got ${width}x${height}`);
   });
 });

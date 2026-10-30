@@ -6,8 +6,9 @@ import { useLocale } from "@/lib/i18n/locale-context";
 import { wedding } from "@/lib/wedding";
 
 /**
- * China gift — vertical card; landscape source cropped upright so the horizon
- * stays horizontal (no CSS rotate that tips the scene sideways).
+ * China gift — landscape frame + content rotated 90° CLOCKWISE together
+ * into a portrait slot. couple-china.jpg is pre-oriented so after CW
+ * the horizon reads level and people are upright.
  */
 export function GiftSection() {
   const { t } = useLocale();
@@ -19,12 +20,19 @@ export function GiftSection() {
         <SectionTitle>{t("giftTitle")}</SectionTitle>
 
         <div className="mt-14 grid gap-12 md:grid-cols-2 md:items-center">
-          <div className="relative mx-auto w-full max-w-sm">
-            <PhotoFrame
-              src={wedding.images.china.src}
-              alt={wedding.images.china.alt}
-              aspect="portrait"
-            />
+          <div className="relative mx-auto aspect-[3/4] w-full max-w-sm">
+            <div
+              className="absolute top-1/2 left-1/2 w-[133.333%] origin-center"
+              style={{
+                transform: "translate(-50%, -50%) rotate(90deg)",
+              }}
+            >
+              <PhotoFrame
+                src={wedding.images.china.src}
+                alt={wedding.images.china.alt}
+                aspect="landscape"
+              />
+            </div>
           </div>
           <div className="text-center md:pl-2 md:text-left">
             <p className="mx-auto max-w-md text-base leading-relaxed text-muted-foreground md:mx-0">
