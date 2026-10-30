@@ -16,7 +16,7 @@ export function SiteHeader() {
         </p>
         <div className="pointer-events-auto flex items-center gap-4 md:gap-6">
           <nav className="hidden items-center gap-5 text-sm text-white/85 sm:flex">
-            <Link href="#day" className="hover:text-white">
+            <Link href="#place-day" className="hover:text-white">
               {t("navDetails")}
             </Link>
             <Link href="#stay" className="hover:text-white">

@@ -4,8 +4,9 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
-  useSyncExternalStore,
+  useState,
   type ReactNode,
 } from "react";
 import { messages, type MessageKey } from "@/lib/i18n/messages";
@@ -25,38 +26,43 @@ function isLocale(value: string | null): value is Locale {
   return value === "it" || value === "en";
 }
 
-function subscribe(onStoreChange: () => void) {
-  window.addEventListener("storage", onStoreChange);
-  window.addEventListener("wedding-locale", onStoreChange);
-  return () => {
-    window.removeEventListener("storage", onStoreChange);
-    window.removeEventListener("wedding-locale", onStoreChange);
-  };
-}
-
-function getSnapshot(): Locale {
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  return isLocale(stored) ? stored : "it";
-}
-
-function getServerSnapshot(): Locale {
-  return "it";
-}
-
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  const locale = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const [locale, setLocaleState] = useState<Locale>("it");
+
+  useEffect(() => {
+    let cancelled = false;
+    try {
+      const stored = window.localStorage.getItem(STORAGE_KEY);
+      if (isLocale(stored)) {
+        queueMicrotask(() => {
+          if (cancelled) return;
+          setLocaleState(stored);
+          document.documentElement.lang = stored;
+        });
+      }
+    } catch {
+      /* ignore */
+    }
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const setLocale = useCallback((next: Locale) => {
-    window.localStorage.setItem(STORAGE_KEY, next);
+    setLocaleState(next);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, next);
+    } catch {
+      /* ignore */
+    }
     document.documentElement.lang = next;
-    window.dispatchEvent(new Event("wedding-locale"));
   }, []);
 
   const value = useMemo<LocaleContextValue>(
     () => ({
       locale,
       setLocale,
-      t: (key) => messages[locale][key],
+      t: (key) => messages[locale][key] ?? messages.it[key],
     }),
     [locale, setLocale],
   );

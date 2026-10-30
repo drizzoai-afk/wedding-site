@@ -20,9 +20,8 @@ describe("wedding config", () => {
     assert.match(whatsappHref("ciao"), /^https:\/\/wa\.me\/393425253645\?text=/);
   });
 
-  it("documents venue image license metadata", () => {
-    assert.equal(wedding.images.venue.attribution.license, "CC BY-SA 4.0");
-    assert.ok(wedding.images.venue.src.startsWith("/"));
+  it("opens with couple photo asset", () => {
+    assert.equal(wedding.images.opening.src, "/couple-hero.jpg");
   });
 });
 
@@ -31,5 +30,16 @@ describe("i18n dictionaries", () => {
     const itKeys = Object.keys(messages.it).sort();
     const enKeys = Object.keys(messages.en).sort();
     assert.deepEqual(itKeys, enKeys);
+  });
+
+  it("has real English strings distinct from Italian for guest copy", () => {
+    assert.equal(messages.en.placeDayTitle, "Place & day");
+    assert.equal(messages.it.placeDayTitle, "Luogo e giorno");
+    assert.equal(messages.en.heroDate, "Tuesday, 31 August 2027");
+    assert.equal(messages.en.rsvpSubmit, "Send RSVP");
+    assert.ok(!("rsvpGuests" in messages.en));
+    assert.ok(!("venueAttribution" in messages.en));
+    assert.ok(!("chinaCaption" in messages.en));
+    assert.ok(!("rsvpStubNote" in messages.en));
   });
 });

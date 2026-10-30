@@ -17,19 +17,26 @@ export function Hero() {
     >
       <div className="absolute inset-0 -z-10">
         <Image
-          src={wedding.images.venue.src}
-          alt="Masseria Spina, Monopoli — facciata rossa e scalone"
+          src={wedding.images.opening.src}
+          alt={wedding.images.opening.alt}
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[center_28%] animate-hero-drift scale-105 [filter:saturate(0.92)_brightness(1.03)_contrast(0.98)]"
+          className="object-cover object-[center_35%] animate-hero-drift scale-[1.03]"
+        />
+        {/* Minimal acquerello: soft warm wash + subtle paper grain — not a heavy filter */}
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_srgb,var(--sand-0)_28%,transparent)_0%,color-mix(in_srgb,var(--sand-1)_12%,transparent)_42%,color-mix(in_srgb,var(--brown)_40%,transparent)_100%)]"
         />
         <div
           aria-hidden
-          className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_srgb,var(--brown)_42%,transparent)_0%,color-mix(in_srgb,var(--terracotta)_22%,transparent)_38%,color-mix(in_srgb,var(--ink)_48%,transparent)_100%)]"
+          className="watercolor-grain absolute inset-0 opacity-[0.18] mix-blend-soft-light"
         />
-        <div aria-hidden className="watercolor-grain absolute inset-0 opacity-35 mix-blend-soft-light" />
-        <div aria-hidden className="watercolor-bleed absolute inset-0" />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[radial-gradient(ellipse_85%_70%_at_50%_40%,transparent_50%,color-mix(in_srgb,var(--sand-0)_22%,transparent)_100%)]"
+        />
       </div>
 
       <div className="mx-auto flex min-h-[100svh] w-full max-w-5xl flex-col items-center justify-center px-6 pb-24 pt-28 text-center text-[#fff8f0] md:px-10">
@@ -48,7 +55,7 @@ export function Hero() {
           <span className="block">{wedding.partnerTwo}</span>
         </h1>
 
-        <div className="animate-rise-3 horizon-rule mt-8 w-40 max-w-[40%] bg-none opacity-50" aria-hidden />
+        <div className="animate-rise-3 horizon-rule mt-8 w-40 max-w-[40%] opacity-50" aria-hidden />
 
         <p className="animate-rise-3 mt-8 max-w-xl text-base text-[#fff8f0]/92 md:text-lg">
           {t("heroDate")}
@@ -68,7 +75,7 @@ export function Hero() {
             {t("ctaRsvp")}
           </Link>
           <Link
-            href="#venue"
+            href="#place-day"
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
               "h-11 rounded-md border-[#fff8f0]/45 bg-transparent px-6 text-[#fff8f0] hover:bg-white/10 hover:text-white",

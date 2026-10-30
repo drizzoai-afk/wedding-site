@@ -1,16 +1,15 @@
-# Image attribution
+# Image attribution (repo docs only — not shown on the guest site)
 
-## Masseria Spina hero — `masseria-spina.jpg` (hero only)
+## Opening image — `couple-hero.jpg` / `couple-photo-01.jpg`
 
-- **File:** [Monopoli - Masseria Spina - 2023-09-24 14-31-05 017.jpg](https://commons.wikimedia.org/wiki/File:Monopoli_-_Masseria_Spina_-_2023-09-24_14-31-05_017.jpg)
-- **Author:** Acquario51
-- **License:** [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
-- **Source program:** Wiki Loves Monuments Italia 2023
-- **Resolution:** 2848 × 4288 (Nikon D5000 original)
-- **Placement:** First viewport / hero only — not repeated lower on the page
-- **Not used:** Official [masseriaspinaresort.com](https://www.masseriaspinaresort.com/it/) gallery assets (copyright). Replace with an official editorial photo when permission is granted.
+- Provided by the couple (beach sunset).
+- Guest UI uses a lightly softened web resize (`couple-hero.jpg`) with minimal CSS wash/grain overlays.
+- Full original kept as `couple-photo-01.jpg`.
+
+## Unused / archive
+
+- `masseria-spina.jpg` — Wikimedia Commons CC BY-SA 4.0 (Acquario51 / Wiki Loves Monuments Italia 2023). No longer shown on the invitation; kept for possible later use with permissioned official shots preferred.
 
 ## Placeholders
 
-- `placeholders/couple.svg` — temporary couple slot
-- `placeholders/china.svg` — temporary China photo slot
+- `placeholders/china.svg` — temporary until China photo is supplied.

@@ -12,7 +12,7 @@ type Attendance = "yes" | "no" | "maybe";
 type Status = "idle" | "submitted";
 
 export function RsvpForm() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const [status, setStatus] = useState<Status>("idle");
   const [attendance, setAttendance] = useState<Attendance>("yes");
   const [name, setName] = useState("");
@@ -33,8 +33,8 @@ export function RsvpForm() {
       name: guestName,
       email: String(data.get("email") ?? "").trim(),
       attendance,
-      guests: String(data.get("guests") ?? "1"),
       note: String(data.get("note") ?? "").trim(),
+      locale,
       at: new Date().toISOString(),
     });
     setName(guestName);
@@ -68,8 +68,6 @@ export function RsvpForm() {
 
   return (
     <form onSubmit={onSubmit} className="mx-auto w-full max-w-lg space-y-6 text-left">
-      <p className="text-sm text-muted-foreground">{t("rsvpStubNote")}</p>
-
       <div className="space-y-2">
         <Label htmlFor="name">{t("rsvpName")}</Label>
         <Input
@@ -112,26 +110,13 @@ export function RsvpForm() {
                 value={option.value}
                 checked={attendance === option.value}
                 onChange={() => setAttendance(option.value)}
-                className="size-4 accent-[oklch(0.42_0.09_28)]"
+                className="size-4 accent-[var(--terracotta)]"
               />
               {option.label}
             </label>
           ))}
         </div>
       </fieldset>
-
-      <div className="space-y-2">
-        <Label htmlFor="guests">{t("rsvpGuests")}</Label>
-        <Input
-          id="guests"
-          name="guests"
-          type="number"
-          min={1}
-          max={8}
-          defaultValue={1}
-          className="h-11 rounded-md border-[color:var(--wash-edge)] bg-[color:var(--paper)]/60"
-        />
-      </div>
 
       <div className="space-y-2">
         <Label htmlFor="note">{t("rsvpNote")}</Label>
