@@ -16,8 +16,8 @@ export const wedding = {
     url: "https://www.masseriaspinaresort.com/it/",
   },
   whatsapp: {
-    e164: "+393425253645",
-    display: "+39 342 525 3645",
+    e164: "+4915228348602",
+    display: "+49 1522 8348602",
   },
   /** Replace with the couple’s real IBAN when ready (repo only — not labeled as placeholder in UI) */
   ibanPlaceholder: "IT00 X000 0000 0000 0000 0000 000",

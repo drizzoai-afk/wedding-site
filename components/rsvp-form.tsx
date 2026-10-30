@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useLocale } from "@/lib/i18n/locale-context";
 import { cn } from "@/lib/utils";
 
-type Attendance = "yes" | "no" | "maybe";
+type Attendance = "yes" | "no";
 type Status = "idle" | "submitted";
 
 export function RsvpForm() {
@@ -20,7 +20,6 @@ export function RsvpForm() {
   const attendanceOptions: { value: Attendance; label: string }[] = [
     { value: "yes", label: t("rsvpYes") },
     { value: "no", label: t("rsvpNo") },
-    { value: "maybe", label: t("rsvpMaybe") },
   ];
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {

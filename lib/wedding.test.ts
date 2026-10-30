@@ -17,7 +17,8 @@ describe("wedding config", () => {
 
   it("formats Masseria address and WhatsApp link", () => {
     assert.match(venueAddressBlock(), /Monopoli/);
-    assert.match(whatsappHref("ciao"), /^https:\/\/wa\.me\/393425253645\?text=/);
+    assert.match(whatsappHref("ciao"), /^https:\/\/wa\.me\/4915228348602\?text=/);
+    assert.equal(wedding.whatsapp.display, "+49 1522 8348602");
   });
 
   it("points at logo, full-bleed Masseria, timeline, and China couple photo", () => {
@@ -50,8 +51,15 @@ describe("i18n dictionaries", () => {
       /Rispondete il prima possibile/,
     );
     assert.match(messages.en.rsvpLead, /as soon as you can/i);
-    assert.equal(messages.en.giftTitle, "A note from China");
+    assert.equal(messages.en.giftTitle, "A postcard from China");
     assert.equal(messages.en.placeDayTitle, "Place & day");
+    assert.ok(!messages.en.stayLead.includes("—"));
+    assert.equal(messages.it.rsvpYes, "Sì");
+    assert.equal(messages.it.rsvpNo, "Purtroppo no");
+    assert.equal(messages.en.rsvpYes, "Yes");
+    assert.equal(messages.en.rsvpNo, "Unfortunately not");
+    assert.ok(!("rsvpMaybe" in messages.it));
+    assert.ok(!("rsvpMaybe" in messages.en));
   });
 });
 
