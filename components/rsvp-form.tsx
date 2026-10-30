@@ -5,32 +5,30 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { useLocale } from "@/lib/i18n/locale-context";
 import { cn } from "@/lib/utils";
-import { wedding } from "@/lib/wedding";
 
 type Attendance = "yes" | "no" | "maybe";
-
 type Status = "idle" | "submitted";
 
-const attendanceOptions: { value: Attendance; label: string }[] = [
-  { value: "yes", label: "Joyfully accepts" },
-  { value: "no", label: "Regretfully declines" },
-  { value: "maybe", label: "Still deciding" },
-];
-
 export function RsvpForm() {
+  const { t } = useLocale();
   const [status, setStatus] = useState<Status>("idle");
   const [attendance, setAttendance] = useState<Attendance>("yes");
   const [name, setName] = useState("");
 
+  const attendanceOptions: { value: Attendance; label: string }[] = [
+    { value: "yes", label: t("rsvpYes") },
+    { value: "no", label: t("rsvpNo") },
+    { value: "maybe", label: t("rsvpMaybe") },
+  ];
+
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = event.currentTarget;
-    const data = new FormData(form);
+    const data = new FormData(event.currentTarget);
     const guestName = String(data.get("name") ?? "").trim();
     if (!guestName) return;
 
-    // Local mock only — no network, auth, or database in this slice.
     console.info("[rsvp-mock]", {
       name: guestName,
       email: String(data.get("email") ?? "").trim(),
@@ -46,15 +44,13 @@ export function RsvpForm() {
   if (status === "submitted") {
     return (
       <div
-        className="rounded-xl border border-border/80 bg-muted/40 px-6 py-10 text-center"
+        className="rounded-xl border border-[color:var(--wash-edge)] bg-[color:var(--paper)]/75 px-6 py-10 text-center"
         role="status"
       >
         <p className="font-[family-name:var(--font-display)] text-3xl font-light">
-          Thank you, {name}.
+          {t("rsvpThanks")} {name}.
         </p>
-        <p className="mt-3 text-muted-foreground">
-          Your RSVP is saved locally for now. We&apos;ll wire real delivery later.
-        </p>
+        <p className="mt-3 text-muted-foreground">{t("rsvpThanksBody")}</p>
         <Button
           type="button"
           variant="outline"
@@ -64,50 +60,41 @@ export function RsvpForm() {
             setName("");
           }}
         >
-          Submit another
+          {t("rsvpAgain")}
         </Button>
       </div>
     );
   }
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="mx-auto w-full max-w-lg space-y-6 text-left"
-      noValidate
-    >
-      <p className="text-sm text-muted-foreground">
-        Kindly reply by {wedding.rsvpDeadlineDisplay}. This form is a UI stub —
-        responses stay in your browser console for now.
-      </p>
+    <form onSubmit={onSubmit} className="mx-auto w-full max-w-lg space-y-6 text-left">
+      <p className="text-sm text-muted-foreground">{t("rsvpStubNote")}</p>
 
       <div className="space-y-2">
-        <Label htmlFor="name">Full name</Label>
+        <Label htmlFor="name">{t("rsvpName")}</Label>
         <Input
           id="name"
           name="name"
           required
           autoComplete="name"
-          placeholder="Alex Morgan"
-          className="h-11"
+          className="h-11 rounded-md border-[color:var(--wash-edge)] bg-[color:var(--paper)]/60"
         />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">{t("rsvpEmail")}</Label>
         <Input
           id="email"
           name="email"
           type="email"
           required
           autoComplete="email"
-          placeholder="you@example.com"
-          className="h-11"
+          className="h-11 rounded-md border-[color:var(--wash-edge)] bg-[color:var(--paper)]/60"
         />
       </div>
 
       <fieldset className="space-y-3">
-        <legend className="text-sm font-medium">Will you attend?</legend>
+        <legend className="text-sm font-medium">{t("rsvpAttend")}</legend>
         <div className="grid gap-2">
           {attendanceOptions.map((option) => (
             <label
@@ -115,8 +102,8 @@ export function RsvpForm() {
               className={cn(
                 "flex cursor-pointer items-center gap-3 rounded-lg border px-3 py-3 text-sm transition-colors",
                 attendance === option.value
-                  ? "border-primary bg-accent/50"
-                  : "border-border hover:bg-muted/50",
+                  ? "border-primary/50 bg-[color:var(--wash-soft)]"
+                  : "border-[color:var(--wash-edge)] bg-[color:var(--paper)]/50 hover:bg-[color:var(--wash-soft)]/70",
               )}
             >
               <input
@@ -125,7 +112,7 @@ export function RsvpForm() {
                 value={option.value}
                 checked={attendance === option.value}
                 onChange={() => setAttendance(option.value)}
-                className="size-4 accent-[oklch(0.34_0.05_175)]"
+                className="size-4 accent-[oklch(0.42_0.09_28)]"
               />
               {option.label}
             </label>
@@ -134,7 +121,7 @@ export function RsvpForm() {
       </fieldset>
 
       <div className="space-y-2">
-        <Label htmlFor="guests">Number of guests (including you)</Label>
+        <Label htmlFor="guests">{t("rsvpGuests")}</Label>
         <Input
           id="guests"
           name="guests"
@@ -142,22 +129,23 @@ export function RsvpForm() {
           min={1}
           max={8}
           defaultValue={1}
-          className="h-11"
+          className="h-11 rounded-md border-[color:var(--wash-edge)] bg-[color:var(--paper)]/60"
         />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="note">Note for the couple (optional)</Label>
+        <Label htmlFor="note">{t("rsvpNote")}</Label>
         <Textarea
           id="note"
           name="note"
           rows={4}
-          placeholder="Dietary needs, song requests, or a hello…"
+          placeholder={t("rsvpNotePlaceholder")}
+          className="rounded-md border-[color:var(--wash-edge)] bg-[color:var(--paper)]/60"
         />
       </div>
 
       <Button type="submit" size="lg" className="h-11 w-full rounded-md">
-        Send RSVP
+        {t("rsvpSubmit")}
       </Button>
     </form>
   );

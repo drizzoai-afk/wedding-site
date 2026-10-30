@@ -1,41 +1,38 @@
-# DESIGN.md — Wedding Site
+# DESIGN.md — Daniele & Andrea
 
-Visual direction for the wedding landing. Edit freely; keep one coherent brief.
+Confirmed brief + **acquerello** direction (2026-10-30).
 
 ## Brand
 
-- **Direction:** Soft stone courtyard at blue hour — cool slate mist, deep ink, a single moss accent.
-- **Brand signal:** Couple names are the hero. Nothing else may overpower them.
-- **Avoid:** Purple gradients, cream+terracotta AI default, newspaper broadsheet, neon glow, pill clusters, emoji.
+- **Names first:** Daniele & Andrea — hero-level signal
+- **Direction:** Mediterranean × wabi-sabi × **acquerello** (watercolor invitation)
+- **Accent:** muted Masseria Spina reds (`#6F3E39` → `oklch(0.42 0.09 28)`, coral wash `#CD634D` softened)
+- **Avoid:** cartoon watercolor filters, purple AI gradients, cream+terracotta cliché stack, busy ornament, dark-mode default
+
+## Acquerello craft
+
+| Device | How |
+|--------|-----|
+| Soft washes | Fixed radial washes on `body`; section `.wash-section` gradients |
+| Paper grain | SVG fractal noise `.watercolor-grain` at low opacity, multiply |
+| Bleed edges | Organic `border-radius` frames (`.bleed-frame`); hero vignette `.watercolor-bleed` |
+| Calm | Large air, soft asymmetry, few type sizes |
 
 ## Typography
 
-| Role | Font | Use |
-|------|------|-----|
-| Display | Fraunces | Couple names, section titles |
-| Body / UI | Figtree | Supporting copy, form labels, nav |
+| Role | Font |
+|------|------|
+| Display | Cormorant Garamond |
+| Body / UI | Figtree |
 
-## Color (OKLCH)
+## Imagery
 
-| Token | Value | Role |
-|-------|-------|------|
-| `--background` | `oklch(0.97 0.008 220)` | Page mist |
-| `--foreground` | `oklch(0.22 0.02 250)` | Ink |
-| `--primary` | `oklch(0.34 0.05 175)` | Moss CTA |
-| `--primary-foreground` | `oklch(0.98 0.01 100)` | On CTA |
-| `--muted` | `oklch(0.93 0.01 220)` | Soft panels |
-| `--accent` | `oklch(0.88 0.03 175)` | Soft moss wash |
-| `--ring` | `oklch(0.45 0.05 175)` | Focus |
+| Asset | Path | Rights |
+|-------|------|--------|
+| Masseria venue | `/public/masseria-spina.jpg` | Wikimedia Commons **CC BY-SA 3.0**, Marco Spina — attribution on page. Official resort photos **not** copied. |
+| Couple / China | `/public/placeholders/*.svg` | Local placeholders — Daniele replaces |
 
-Hero text sits on the photo: off-white ink with soft shadow for contrast.
+## Editable facts
 
-## Composition rules
-
-1. First viewport = one composition: names, one line of date/venue, one CTA group, full-bleed photo.
-2. No cards in the hero. No overlay chips/badges.
-3. RSVP is its own section below the fold — one job, one headline.
-4. Motion: name fade-up, soft hero ken-burns, CTA underline grow — restrained only.
-
-## Editable copy
-
-All couple/date/venue strings live in `lib/wedding.ts`.
+`lib/wedding.ts` — names, venue, WhatsApp, IBAN placeholder, image meta.  
+Strings: `lib/i18n/messages.ts` (IT default + EN).
