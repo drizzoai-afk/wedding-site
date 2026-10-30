@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { SectionTitle } from "@/components/section-title";
 import { useLocale } from "@/lib/i18n/locale-context";
 import { venueAddressBlock, wedding } from "@/lib/wedding";
@@ -49,16 +48,17 @@ export function PlaceDaySection() {
             <p className="text-xs tracking-[0.2em] text-primary/80 uppercase">
               {t("dayFlowLabel")}
             </p>
-            {/* Wider than copy column but always ≤ viewport — no horizontal scroll */}
+            {/* Wider than copy column but always ≤ viewport — no horizontal scroll.
+                Plain <img> + versioned filename: bypasses next/image + browser caches. */}
             <div className="relative left-1/2 mt-8 w-[min(100vw-2rem,72rem)] -translate-x-1/2">
-              <Image
-                src={wedding.images.timeline.src}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`${wedding.images.timeline.src}?v=20261030b`}
                 alt={wedding.images.timeline.alt}
                 width={wedding.images.timeline.width}
                 height={wedding.images.timeline.height}
                 className="mx-auto h-auto w-full"
-                sizes="(max-width: 1152px) calc(100vw - 2rem), 72rem"
-                priority={false}
+                decoding="async"
               />
             </div>
           </div>
