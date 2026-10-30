@@ -144,11 +144,12 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Same wash as the hero — fixed so every section matches */
     background-color: var(--sand-0);
     background-image:
-      radial-gradient(ellipse 90% 60% at 88% -8%, color-mix(in srgb, var(--sun) 35%, transparent), transparent 55%),
-      radial-gradient(ellipse 70% 50% at 8% 0%, color-mix(in srgb, var(--sand-1) 80%, transparent), transparent 50%),
-      linear-gradient(180deg, var(--sand-0) 0%, var(--sand-1) 62%, color-mix(in srgb, var(--sand-2) 55%, var(--sand-1)) 100%);
+      radial-gradient(ellipse 80% 55% at 70% 0%, color-mix(in srgb, var(--sun) 28%, transparent), transparent 55%),
+      radial-gradient(ellipse 60% 45% at 10% 20%, color-mix(in srgb, var(--sand-1) 90%, transparent), transparent 50%),
+      linear-gradient(180deg, var(--sand-0) 0%, var(--sand-1) 70%, color-mix(in srgb, var(--sand-2) 40%, var(--sand-1)) 100%);
     background-attachment: fixed;
   }
   html {
@@ -171,21 +172,10 @@
   pointer-events: none;
 }
 
-.wash-section {
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--sand-0) 70%, transparent),
-    color-mix(in srgb, var(--sand-1) 40%, transparent)
-  );
-}
-
+/* Sections stay transparent so the shared body/hero gradient shows through */
+.wash-section,
 .wash-section--alt {
-  background: linear-gradient(
-    165deg,
-    color-mix(in srgb, var(--sand-1) 55%, transparent),
-    color-mix(in srgb, var(--sand-0) 75%, transparent) 55%,
-    color-mix(in srgb, var(--olive) 12%, var(--sand-0))
-  );
+  background: transparent;
 }
 
 .horizon-rule {

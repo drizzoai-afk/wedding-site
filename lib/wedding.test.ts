@@ -54,6 +54,11 @@ describe("i18n dictionaries", () => {
     assert.match(messages.en.rsvpLead, /as soon as you can/i);
     assert.equal(messages.en.giftTitle, "A postcard from China");
     assert.equal(messages.en.placeDayTitle, "Place & day");
+    assert.equal(
+      messages.it.heroEyebrow,
+      "Vi aspettiamo per il nostro matrimonio",
+    );
+    assert.equal(messages.en.heroEyebrow, "Join us for our wedding");
     assert.ok(!messages.en.stayLead.includes("—"));
     assert.equal(messages.it.rsvpYes, "Sì");
     assert.equal(messages.it.rsvpNo, "Purtroppo no");

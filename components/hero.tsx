@@ -28,20 +28,20 @@ export function Hero() {
       />
 
       <div className="relative z-10 mx-auto flex min-h-[88svh] w-full max-w-5xl flex-col items-center justify-center px-6 pb-16 pt-28 text-center md:px-10">
-        <p className="animate-rise-1 mb-7 font-[family-name:var(--font-display)] text-sm tracking-[0.32em] text-[color:var(--terracotta)] italic uppercase md:text-base">
-          {t("heroEyebrow")}
-        </p>
-
-        <h1 className="animate-rise-2 whitespace-nowrap font-[family-name:var(--font-display)] text-[clamp(2.4rem,9vw,5.5rem)] leading-[0.95] font-light tracking-[-0.02em] text-[color:var(--brown)]">
+        <h1 className="animate-rise-1 whitespace-nowrap font-[family-name:var(--font-display)] text-[clamp(2.4rem,9vw,5.5rem)] leading-[0.95] font-light tracking-[-0.02em] text-[color:var(--brown)]">
           <span>{wedding.partnerOne}</span>
           <span
             aria-hidden
-            className="mx-[0.18em] inline-block font-[family-name:var(--font-display)] text-[0.62em] leading-none font-light text-[color:var(--brown)] align-baseline"
+            className="mx-[0.18em] inline-block align-baseline font-[family-name:var(--font-display)] text-[0.62em] leading-none font-light text-[color:var(--brown)]"
           >
             &
           </span>
           <span>{wedding.partnerTwo}</span>
         </h1>
+
+        <p className="animate-rise-2 mt-5 max-w-xl font-[family-name:var(--font-display)] text-base tracking-[0.04em] text-[color:var(--terracotta)] italic md:text-lg">
+          {t("heroEyebrow")}
+        </p>
 
         <div className="animate-rise-3 mt-8 w-full max-w-[min(92vw,28rem)] sm:max-w-[32rem] md:max-w-[38rem]">
           <Image
