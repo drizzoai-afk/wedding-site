@@ -44,5 +44,31 @@ describe("i18n dictionaries", () => {
     assert.ok(!("rsvpGuests" in messages.en));
     assert.ok(!("heroDate" in messages.it));
     assert.ok(!("dayFlowValue" in messages.it));
+    assert.ok(!("dayWhereValue" in messages.it));
+  });
+});
+
+describe("china photo asset", () => {
+  it("is landscape (width greater than height)", async () => {
+    const { readFileSync } = await import("node:fs");
+    const { join } = await import("node:path");
+    const buf = readFileSync(join(process.cwd(), "public/couple-china.jpg"));
+    // JPEG SOF0/2: scan for dimensions
+    let i = 2;
+    let width = 0;
+    let height = 0;
+    while (i < buf.length) {
+      if (buf[i] !== 0xff) break;
+      const marker = buf[i + 1];
+      if (marker === 0xd9) break;
+      const len = (buf[i + 2] << 8) | buf[i + 3];
+      if (marker >= 0xc0 && marker <= 0xc3) {
+        height = (buf[i + 5] << 8) | buf[i + 6];
+        width = (buf[i + 7] << 8) | buf[i + 8];
+        break;
+      }
+      i += 2 + len;
+    }
+    assert.ok(width > height, `expected landscape, got ${width}x${height}`);
   });
 });

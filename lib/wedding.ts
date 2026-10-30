@@ -41,7 +41,7 @@ export const wedding = {
       width: 1800,
       height: 491,
     },
-    /** Couple photo reserved for China section (vertical crop) */
+    /** Couple photo in China section — landscape, horizon horizontal */
     china: {
       src: "/couple-china.jpg",
       alt: "Daniele e Andrea",

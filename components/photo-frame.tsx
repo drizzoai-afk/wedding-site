@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-/** Soft bleed frame — couple placeholder or China (vertical) photo. */
+/** Soft bleed frame — empty sposi placeholder or China landscape photo. */
 export function PhotoFrame({
   src,
   alt,
@@ -11,7 +11,7 @@ export function PhotoFrame({
   src?: string;
   alt?: string;
   priority?: boolean;
-  /** landscape 4:3 (default) or portrait 3:4 for China */
+  /** landscape 4:3 (China / default) or portrait 3:4 */
   aspect?: "landscape" | "portrait";
   className?: string;
 }) {

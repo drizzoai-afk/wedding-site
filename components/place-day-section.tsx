@@ -4,14 +4,9 @@ import Image from "next/image";
 import { useLocale } from "@/lib/i18n/locale-context";
 import { venueAddressBlock, wedding } from "@/lib/wedding";
 
-/** Single guest section: place + day + visual program timeline. */
+/** Place + day + program timeline (image only under Programma). */
 export function PlaceDaySection() {
   const { t } = useLocale();
-
-  const rows = [
-    { label: t("dayWhenLabel"), value: t("dayWhenValue") },
-    { label: t("dayWhereLabel"), value: t("dayWhereValue") },
-  ];
 
   return (
     <section id="place-day" className="wash-section relative px-6 py-24 md:px-10">
@@ -22,47 +17,52 @@ export function PlaceDaySection() {
         </h2>
         <div className="horizon-rule mx-auto mt-8 max-w-xs" aria-hidden />
 
-        <dl className="mt-14 space-y-9 text-left sm:mx-auto sm:max-w-md">
-          {rows.map((row) => (
-            <div key={row.label}>
-              <dt className="text-xs tracking-[0.2em] text-primary/80 uppercase">
-                {row.label}
-              </dt>
-              <dd className="mt-2 font-[family-name:var(--font-display)] text-2xl text-[color:var(--ink)]">
-                {row.value}
-              </dd>
+        <div className="mt-14 space-y-14">
+          <div>
+            <p className="text-xs tracking-[0.2em] text-primary/80 uppercase">
+              {t("dayWhenLabel")}
+            </p>
+            <p className="mt-3 font-[family-name:var(--font-display)] text-2xl text-[color:var(--ink)] md:text-3xl">
+              {t("dayWhenValue")}
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs tracking-[0.2em] text-primary/80 uppercase">
+              {t("dayWhereLabel")}
+            </p>
+            <address className="mt-3 not-italic text-muted-foreground">
+              <p className="font-[family-name:var(--font-display)] text-xl text-[color:var(--ink)] md:text-2xl">
+                {wedding.venue.name}
+              </p>
+              <p className="mt-2 text-base md:text-lg">{venueAddressBlock()}</p>
+            </address>
+            <a
+              href={wedding.venue.url}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-flex text-sm font-medium text-primary underline-offset-4 hover:underline"
+            >
+              {t("venueLink")}
+            </a>
+          </div>
+
+          <div>
+            <p className="text-xs tracking-[0.2em] text-primary/80 uppercase">
+              {t("dayFlowLabel")}
+            </p>
+            <div className="mt-6 w-full overflow-x-auto">
+              <Image
+                src={wedding.images.timeline.src}
+                alt={wedding.images.timeline.alt}
+                width={wedding.images.timeline.width}
+                height={wedding.images.timeline.height}
+                className="mx-auto h-auto w-full max-w-4xl"
+                sizes="(max-width: 896px) 100vw, 896px"
+              />
             </div>
-          ))}
-        </dl>
-
-        <div className="mt-16 w-full overflow-x-auto">
-          <p className="mb-6 text-xs tracking-[0.2em] text-primary/80 uppercase">
-            {t("dayFlowLabel")}
-          </p>
-          <Image
-            src={wedding.images.timeline.src}
-            alt={wedding.images.timeline.alt}
-            width={wedding.images.timeline.width}
-            height={wedding.images.timeline.height}
-            className="mx-auto h-auto w-full max-w-4xl"
-            sizes="(max-width: 896px) 100vw, 896px"
-          />
+          </div>
         </div>
-
-        <address className="mt-14 not-italic text-muted-foreground">
-          <p className="font-[family-name:var(--font-display)] text-xl text-[color:var(--ink)]">
-            {wedding.venue.name}
-          </p>
-          <p className="mt-2">{venueAddressBlock()}</p>
-        </address>
-        <a
-          href={wedding.venue.url}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-6 inline-flex text-sm font-medium text-primary underline-offset-4 hover:underline"
-        >
-          {t("venueLink")}
-        </a>
       </div>
     </section>
   );
