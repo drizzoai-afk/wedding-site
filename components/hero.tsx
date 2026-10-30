@@ -32,15 +32,15 @@ export function Hero() {
           {t("heroEyebrow")}
         </p>
 
-        <h1 className="animate-rise-2 font-[family-name:var(--font-display)] text-[clamp(3.2rem,12vw,6.5rem)] leading-[0.9] font-light tracking-[-0.02em] text-balance text-[color:var(--brown)]">
-          <span className="block">{wedding.partnerOne}</span>
+        <h1 className="animate-rise-2 whitespace-nowrap font-[family-name:var(--font-display)] text-[clamp(2.4rem,9vw,5.5rem)] leading-[0.95] font-light tracking-[-0.02em] text-[color:var(--brown)]">
+          <span>{wedding.partnerOne}</span>
           <span
             aria-hidden
-            className="my-2 block font-[family-name:var(--font-display)] text-[clamp(2rem,8vw,3.5rem)] leading-none font-light text-[color:var(--brown)] md:my-3"
+            className="mx-[0.18em] inline-block font-[family-name:var(--font-display)] text-[0.62em] leading-none font-light text-[color:var(--brown)] align-baseline"
           >
             &
           </span>
-          <span className="block">{wedding.partnerTwo}</span>
+          <span>{wedding.partnerTwo}</span>
         </h1>
 
         <div className="animate-rise-3 mt-8 w-full max-w-[min(92vw,28rem)] sm:max-w-[32rem] md:max-w-[38rem]">

@@ -1,6 +1,7 @@
 import { PhotoFrame } from "@/components/photo-frame";
+import { wedding } from "@/lib/wedding";
 
-/** Sposi — empty framed placeholder only (no section title). */
+/** Sposi — childhood dual portrait in the shared PhotoFrame (no section title). */
 export function CoupleSection() {
   return (
     <section
@@ -10,7 +11,11 @@ export function CoupleSection() {
     >
       <div className="watercolor-grain pointer-events-none absolute inset-0 opacity-20" />
       <div className="relative mx-auto max-w-3xl">
-        <PhotoFrame aspect="landscape" />
+        <PhotoFrame
+          src={wedding.images.couple.src}
+          alt={wedding.images.couple.alt}
+          aspect="landscape"
+        />
       </div>
     </section>
   );

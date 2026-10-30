@@ -46,6 +46,11 @@ export const wedding = {
       src: "/couple-china.jpg",
       alt: "Daniele e Andrea",
     },
+    /** Childhood dual portrait for the sposi PhotoFrame slot */
+    couple: {
+      src: "/couple-childhood.png",
+      alt: "Daniele e Andrea da bambini",
+    },
   },
 } as const;
 

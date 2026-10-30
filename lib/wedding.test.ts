@@ -21,11 +21,12 @@ describe("wedding config", () => {
     assert.equal(wedding.whatsapp.display, "+49 1522 8348602");
   });
 
-  it("points at logo, full-bleed Masseria, timeline, and China couple photo", () => {
+  it("points at logo, full-bleed Masseria, timeline, China, and childhood couple photo", () => {
     assert.equal(wedding.images.logo.src, "/masseria-wedding-logo.svg");
     assert.equal(wedding.images.masseria.src, "/masseria-hero-bleed.jpg");
     assert.equal(wedding.images.timeline.src, "/program-timeline.png");
     assert.equal(wedding.images.china.src, "/couple-china.jpg");
+    assert.equal(wedding.images.couple.src, "/couple-childhood.png");
   });
 });
 
