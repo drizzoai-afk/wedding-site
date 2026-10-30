@@ -23,15 +23,15 @@ export const wedding = {
   ibanPlaceholder: "IT00 X000 0000 0000 0000 0000 000",
   images: {
     venue: {
+      /** Hero only — sharp Wiki Loves Monuments photo of Masseria Spina facade */
       src: "/masseria-spina.jpg",
-      /** Local copy of Wikimedia Commons CC BY-SA 3.0 work */
       attribution: {
-        author: "Marco Spina",
-        license: "CC BY-SA 3.0",
-        licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+        author: "Acquario51",
+        license: "CC BY-SA 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
         sourceUrl:
-          "https://commons.wikimedia.org/wiki/File:Masseria_Spina_Grande.jpg",
-        note: "Official Masseria Spina marketing photos were not reused (copyright). Replace with an official shot when the resort grants permission.",
+          "https://commons.wikimedia.org/wiki/File:Monopoli_-_Masseria_Spina_-_2023-09-24_14-31-05_017.jpg",
+        note: "Hero-only placement. Official Masseria Spina marketing photos were not reused. Replace with an official editorial shot when the resort grants permission.",
       },
     },
     couple: {

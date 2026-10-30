@@ -18,40 +18,42 @@ export function Hero() {
       <div className="absolute inset-0 -z-10">
         <Image
           src={wedding.images.venue.src}
-          alt="Masseria Spina Grande, Monopoli"
+          alt="Masseria Spina, Monopoli — facciata rossa e scalone"
           fill
           priority
           sizes="100vw"
-          className="object-cover animate-hero-drift scale-105"
+          className="object-cover object-[center_28%] animate-hero-drift scale-105 [filter:saturate(0.92)_brightness(1.03)_contrast(0.98)]"
         />
         <div
           aria-hidden
-          className="absolute inset-0 bg-[linear-gradient(180deg,oklch(0.28_0.04_35/0.45)_0%,oklch(0.35_0.04_40/0.25)_40%,oklch(0.28_0.05_30/0.55)_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_srgb,var(--brown)_42%,transparent)_0%,color-mix(in_srgb,var(--terracotta)_22%,transparent)_38%,color-mix(in_srgb,var(--ink)_48%,transparent)_100%)]"
         />
-        <div aria-hidden className="watercolor-grain absolute inset-0 opacity-40 mix-blend-soft-light" />
+        <div aria-hidden className="watercolor-grain absolute inset-0 opacity-35 mix-blend-soft-light" />
         <div aria-hidden className="watercolor-bleed absolute inset-0" />
       </div>
 
-      <div className="mx-auto flex min-h-[100svh] w-full max-w-5xl flex-col items-center justify-center px-6 pb-24 pt-28 text-center text-white md:px-10">
-        <p className="animate-rise-1 mb-7 text-sm tracking-[0.28em] text-white/80 uppercase">
+      <div className="mx-auto flex min-h-[100svh] w-full max-w-5xl flex-col items-center justify-center px-6 pb-24 pt-28 text-center text-[#fff8f0] md:px-10">
+        <p className="animate-rise-1 mb-7 font-[family-name:var(--font-display)] text-sm tracking-[0.32em] text-[color:var(--sun)] italic uppercase md:text-base">
           {t("heroEyebrow")}
         </p>
 
-        <h1 className="animate-rise-2 font-[family-name:var(--font-display)] text-[clamp(3.4rem,13vw,7.75rem)] leading-[0.9] font-light tracking-[-0.02em] text-balance drop-shadow-[0_2px_28px_oklch(0_0_0/0.28)]">
+        <h1 className="animate-rise-2 font-[family-name:var(--font-display)] text-[clamp(3.4rem,13vw,7.75rem)] leading-[0.9] font-light tracking-[-0.02em] text-balance drop-shadow-[0_2px_28px_rgba(0,0,0,0.28)]">
           <span className="block">{wedding.partnerOne}</span>
           <span
             aria-hidden
-            className="my-2 block font-[family-name:var(--font-body)] text-base tracking-[0.38em] text-white/75 uppercase md:my-3 md:text-lg"
+            className="my-2 block font-[family-name:var(--font-display)] text-base tracking-[0.38em] text-[color:var(--gold)] italic uppercase md:my-3 md:text-lg"
           >
             {t("heroAnd")}
           </span>
           <span className="block">{wedding.partnerTwo}</span>
         </h1>
 
-        <p className="animate-rise-3 mt-8 max-w-xl text-base text-white/92 md:text-lg">
+        <div className="animate-rise-3 horizon-rule mt-8 w-40 max-w-[40%] bg-none opacity-50" aria-hidden />
+
+        <p className="animate-rise-3 mt-8 max-w-xl text-base text-[#fff8f0]/92 md:text-lg">
           {t("heroDate")}
         </p>
-        <p className="animate-rise-3 mt-2 text-sm tracking-wide text-white/75 md:text-base">
+        <p className="animate-rise-3 mt-2 text-sm tracking-wide text-[#fff8f0]/75 md:text-base">
           {t("heroSub")}
         </p>
 
@@ -60,7 +62,7 @@ export function Hero() {
             href="#rsvp"
             className={cn(
               buttonVariants({ size: "lg" }),
-              "h-11 rounded-md bg-[oklch(0.97_0.01_85)] px-6 text-[oklch(0.32_0.06_28)] hover:bg-white",
+              "h-11 rounded-md bg-[color:var(--sand-0)] px-6 text-[color:var(--brown)] hover:bg-white",
             )}
           >
             {t("ctaRsvp")}
@@ -69,7 +71,7 @@ export function Hero() {
             href="#venue"
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
-              "h-11 rounded-md border-white/45 bg-transparent px-6 text-white hover:bg-white/10 hover:text-white",
+              "h-11 rounded-md border-[#fff8f0]/45 bg-transparent px-6 text-[#fff8f0] hover:bg-white/10 hover:text-white",
             )}
           >
             {t("ctaDetails")}

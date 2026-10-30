@@ -50,81 +50,92 @@
 
 :root {
   /*
-   * Acquerello × Mediterranean × wabi-sabi
-   * Accent toward Masseria Spina reds (#6F3E39 / #CD634D) — muted washes, not neon.
+   * style10 Mediterranean invitation palette
+   * https://wyx-sg.github.io/wedding-invitation-skill/invitations/style10-mediterranean.html
+   * Accent: terracotta #c4683a (aligns with Masseria Spina red walls)
    */
-  --paper: oklch(0.97 0.012 85);
-  --wash-soft: oklch(0.93 0.025 45);
-  --wash-edge: oklch(0.84 0.03 40);
-  --background: oklch(0.965 0.014 80);
-  --foreground: oklch(0.28 0.03 35);
-  --card: oklch(0.98 0.01 85);
-  --card-foreground: oklch(0.28 0.03 35);
-  --popover: oklch(0.98 0.01 85);
-  --popover-foreground: oklch(0.28 0.03 35);
-  --primary: oklch(0.42 0.09 28);
-  --primary-foreground: oklch(0.97 0.01 85);
-  --secondary: oklch(0.93 0.02 70);
-  --secondary-foreground: oklch(0.32 0.04 35);
-  --muted: oklch(0.93 0.015 75);
-  --muted-foreground: oklch(0.48 0.03 40);
-  --accent: oklch(0.88 0.05 35);
-  --accent-foreground: oklch(0.32 0.06 28);
-  --destructive: oklch(0.52 0.16 25);
-  --border: oklch(0.86 0.025 45);
-  --input: oklch(0.88 0.02 50);
-  --ring: oklch(0.5 0.08 28);
-  --chart-1: oklch(0.55 0.09 28);
-  --chart-2: oklch(0.62 0.05 70);
-  --chart-3: oklch(0.48 0.04 150);
-  --chart-4: oklch(0.7 0.05 45);
-  --chart-5: oklch(0.4 0.06 30);
-  --radius: 0.45rem;
-  --sidebar: oklch(0.97 0.012 85);
-  --sidebar-foreground: oklch(0.28 0.03 35);
-  --sidebar-primary: oklch(0.42 0.09 28);
-  --sidebar-primary-foreground: oklch(0.97 0.01 85);
-  --sidebar-accent: oklch(0.88 0.05 35);
-  --sidebar-accent-foreground: oklch(0.32 0.06 28);
-  --sidebar-border: oklch(0.86 0.025 45);
-  --sidebar-ring: oklch(0.5 0.08 28);
+  --sand-0: #f4ead8;
+  --sand-1: #ecd9b8;
+  --sand-2: #d4a37a;
+  --terracotta: #c4683a;
+  --sun: #f4a05a;
+  --olive: #5a7a5e;
+  --ink: #2c4a3e;
+  --brown: #5a3a28;
+  --gold: #c89968;
+  --horizon: #8b5a3e;
+  --outer: #1a2a26;
+
+  --paper: var(--sand-0);
+  --wash-soft: color-mix(in srgb, var(--sand-1) 70%, white);
+  --wash-edge: color-mix(in srgb, var(--sand-2) 45%, var(--sand-0));
+
+  --background: var(--sand-0);
+  --foreground: var(--brown);
+  --card: color-mix(in srgb, var(--sand-0) 88%, white);
+  --card-foreground: var(--brown);
+  --popover: color-mix(in srgb, var(--sand-0) 88%, white);
+  --popover-foreground: var(--brown);
+  --primary: var(--terracotta);
+  --primary-foreground: #fff8f0;
+  --secondary: color-mix(in srgb, var(--sand-1) 80%, white);
+  --secondary-foreground: var(--ink);
+  --muted: color-mix(in srgb, var(--sand-1) 65%, white);
+  --muted-foreground: var(--olive);
+  --accent: color-mix(in srgb, var(--olive) 18%, var(--sand-0));
+  --accent-foreground: var(--ink);
+  --destructive: #9a3b2e;
+  --border: color-mix(in srgb, var(--horizon) 28%, var(--sand-0));
+  --input: color-mix(in srgb, var(--horizon) 22%, var(--sand-0));
+  --ring: var(--terracotta);
+  --chart-1: var(--terracotta);
+  --chart-2: var(--olive);
+  --chart-3: var(--gold);
+  --chart-4: var(--sand-2);
+  --chart-5: var(--ink);
+  --radius: 0.4rem;
+  --sidebar: var(--sand-0);
+  --sidebar-foreground: var(--brown);
+  --sidebar-primary: var(--terracotta);
+  --sidebar-primary-foreground: #fff8f0;
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--terracotta);
 }
 
 .dark {
-  --paper: oklch(0.24 0.02 40);
-  --wash-soft: oklch(0.28 0.03 35);
-  --wash-edge: oklch(0.36 0.03 35);
-  --background: oklch(0.22 0.02 40);
-  --foreground: oklch(0.94 0.015 85);
-  --card: oklch(0.26 0.02 40);
-  --card-foreground: oklch(0.94 0.015 85);
-  --popover: oklch(0.26 0.02 40);
-  --popover-foreground: oklch(0.94 0.015 85);
-  --primary: oklch(0.7 0.08 30);
-  --primary-foreground: oklch(0.22 0.03 30);
-  --secondary: oklch(0.3 0.02 45);
-  --secondary-foreground: oklch(0.94 0.015 85);
-  --muted: oklch(0.3 0.02 45);
-  --muted-foreground: oklch(0.72 0.02 70);
-  --accent: oklch(0.34 0.04 35);
-  --accent-foreground: oklch(0.94 0.015 85);
-  --destructive: oklch(0.62 0.16 25);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.68 0.07 30);
-  --chart-1: oklch(0.7 0.08 30);
-  --chart-2: oklch(0.65 0.05 70);
-  --chart-3: oklch(0.6 0.04 150);
-  --chart-4: oklch(0.75 0.05 45);
-  --chart-5: oklch(0.55 0.06 30);
-  --sidebar: oklch(0.26 0.02 40);
-  --sidebar-foreground: oklch(0.94 0.015 85);
-  --sidebar-primary: oklch(0.7 0.08 30);
-  --sidebar-primary-foreground: oklch(0.22 0.03 30);
-  --sidebar-accent: oklch(0.34 0.04 35);
-  --sidebar-accent-foreground: oklch(0.94 0.015 85);
-  --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.68 0.07 30);
+  --background: var(--outer);
+  --foreground: var(--sand-0);
+  --card: #243530;
+  --card-foreground: var(--sand-0);
+  --popover: #243530;
+  --popover-foreground: var(--sand-0);
+  --primary: var(--sun);
+  --primary-foreground: var(--outer);
+  --secondary: #2c4038;
+  --secondary-foreground: var(--sand-0);
+  --muted: #2c4038;
+  --muted-foreground: color-mix(in srgb, var(--sand-1) 70%, var(--olive));
+  --accent: #334840;
+  --accent-foreground: var(--sand-0);
+  --destructive: #d47468;
+  --border: color-mix(in srgb, var(--sand-0) 14%, transparent);
+  --input: color-mix(in srgb, var(--sand-0) 16%, transparent);
+  --ring: var(--gold);
+  --chart-1: var(--sun);
+  --chart-2: var(--gold);
+  --chart-3: var(--olive);
+  --chart-4: var(--sand-2);
+  --chart-5: var(--sand-0);
+  --sidebar: #243530;
+  --sidebar-foreground: var(--sand-0);
+  --sidebar-primary: var(--sun);
+  --sidebar-primary-foreground: var(--outer);
+  --sidebar-accent: #334840;
+  --sidebar-accent-foreground: var(--sand-0);
+  --sidebar-border: color-mix(in srgb, var(--sand-0) 14%, transparent);
+  --sidebar-ring: var(--gold);
 }
 
 @layer base {
@@ -133,10 +144,11 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-color: var(--sand-0);
     background-image:
-      radial-gradient(ellipse 90% 55% at 12% -10%, oklch(0.9 0.05 35 / 0.55), transparent 55%),
-      radial-gradient(ellipse 70% 45% at 95% 8%, oklch(0.9 0.04 70 / 0.4), transparent 50%),
-      radial-gradient(ellipse 60% 40% at 50% 100%, oklch(0.9 0.03 150 / 0.2), transparent 55%);
+      radial-gradient(ellipse 90% 60% at 88% -8%, color-mix(in srgb, var(--sun) 35%, transparent), transparent 55%),
+      radial-gradient(ellipse 70% 50% at 8% 0%, color-mix(in srgb, var(--sand-1) 80%, transparent), transparent 50%),
+      linear-gradient(180deg, var(--sand-0) 0%, var(--sand-1) 62%, color-mix(in srgb, var(--sand-2) 55%, var(--sand-1)) 100%);
     background-attachment: fixed;
   }
   html {
@@ -144,42 +156,59 @@
   }
 }
 
-/* Paper grain — refined, not cartoon filter */
+/* Paper grain — refined invitation texture */
 .watercolor-grain {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.22 0 0 0 0 0.16 0 0 0 0.45 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.28 0 0 0 0 0.18 0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   background-size: 180px 180px;
   mix-blend-mode: multiply;
   pointer-events: none;
 }
 
-/* Soft vignette / wash bleed at edges */
 .watercolor-bleed {
   background:
-    radial-gradient(ellipse 85% 70% at 50% 45%, transparent 45%, oklch(0.35 0.05 30 / 0.28) 100%),
-    linear-gradient(180deg, oklch(0.45 0.06 30 / 0.12), transparent 18%, transparent 78%, oklch(0.32 0.05 30 / 0.22));
+    radial-gradient(ellipse 88% 72% at 50% 42%, transparent 42%, color-mix(in srgb, var(--brown) 28%, transparent) 100%),
+    linear-gradient(180deg, color-mix(in srgb, var(--terracotta) 18%, transparent), transparent 22%, transparent 72%, color-mix(in srgb, var(--ink) 30%, transparent));
   pointer-events: none;
 }
 
 .wash-section {
-  background:
-    linear-gradient(180deg, oklch(0.97 0.012 85 / 0.55), oklch(0.95 0.02 70 / 0.35));
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--sand-0) 70%, transparent),
+    color-mix(in srgb, var(--sand-1) 40%, transparent)
+  );
 }
 
 .wash-section--alt {
-  background:
-    linear-gradient(165deg, oklch(0.94 0.03 45 / 0.55), oklch(0.96 0.015 85 / 0.7) 55%, oklch(0.93 0.025 150 / 0.25));
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--sand-1) 55%, transparent),
+    color-mix(in srgb, var(--sand-0) 75%, transparent) 55%,
+    color-mix(in srgb, var(--olive) 12%, var(--sand-0))
+  );
 }
 
-/* Gentle irregular “bleed” frame for photos — soft mask, not hard card */
+.horizon-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--horizon) 20%,
+    var(--horizon) 80%,
+    transparent 100%
+  );
+  opacity: 0.35;
+}
+
 .bleed-frame {
   position: relative;
   padding: 0.35rem;
   background:
-    radial-gradient(120% 90% at 20% 15%, oklch(0.92 0.04 35 / 0.55), transparent 55%),
-    radial-gradient(100% 80% at 85% 80%, oklch(0.9 0.03 70 / 0.4), transparent 50%),
-    oklch(0.95 0.015 80 / 0.65);
+    radial-gradient(120% 90% at 20% 15%, color-mix(in srgb, var(--sand-2) 35%, transparent), transparent 55%),
+    radial-gradient(100% 80% at 85% 80%, color-mix(in srgb, var(--olive) 18%, transparent), transparent 50%),
+    color-mix(in srgb, var(--sand-0) 70%, white);
   border-radius: 42% 58% 48% 52% / 48% 42% 58% 52%;
-  box-shadow: inset 0 0 0 1px oklch(0.72 0.04 35 / 0.18);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--horizon) 20%, transparent);
 }
 
 .bleed-frame > div:first-child,
@@ -198,10 +227,10 @@
 
 @keyframes hero-drift {
   from {
-    transform: scale(1.05) translate3d(0, 0, 0);
+    transform: scale(1.04) translate3d(0, 0, 0);
   }
   to {
-    transform: scale(1.12) translate3d(0, -1.2%, 0);
+    transform: scale(1.1) translate3d(0, -1%, 0);
   }
 }
 

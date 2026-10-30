@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Figtree } from "next/font/google";
+import { Cormorant_Garamond, EB_Garamond } from "next/font/google";
 import { LocaleProvider } from "@/lib/i18n/locale-context";
 import { coupleNames } from "@/lib/wedding";
 import "./globals.css";
@@ -8,11 +8,13 @@ const display = Cormorant_Garamond({
   variable: "--font-display",
   subsets: ["latin", "latin-ext"],
   weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
-const body = Figtree({
+const body = EB_Garamond({
   variable: "--font-body",
   subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {

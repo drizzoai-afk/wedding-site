@@ -1,38 +1,18 @@
 # DESIGN.md — Daniele & Andrea
 
-Confirmed brief + **acquerello** direction (2026-10-30).
+## Direction
 
-## Brand
+- **style10 Mediterranean** invitation palette & sandy washes  
+  Source: https://wyx-sg.github.io/wedding-invitation-skill/invitations/style10-mediterranean.html
+- **Acquerello:** soft washes, paper grain, gentle bleed edges
+- **Accent:** terracotta `#c4683a` (Masseria red walls)
+- **Typography:** Cormorant Garamond + EB Garamond
+- **Hero photo only:** Masseria Spina facade (CC BY-SA 4.0) — no venue photo lower on the page
 
-- **Names first:** Daniele & Andrea — hero-level signal
-- **Direction:** Mediterranean × wabi-sabi × **acquerello** (watercolor invitation)
-- **Accent:** muted Masseria Spina reds (`#6F3E39` → `oklch(0.42 0.09 28)`, coral wash `#CD634D` softened)
-- **Avoid:** cartoon watercolor filters, purple AI gradients, cream+terracotta cliché stack, busy ornament, dark-mode default
+## Cursor design rules
 
-## Acquerello craft
+Lean Next.js profile from [spencergoldade/cursor-designer](https://github.com/spencergoldade/cursor-designer) → `.cursor/rules/` (+ `design/tokens/*`).
 
-| Device | How |
-|--------|-----|
-| Soft washes | Fixed radial washes on `body`; section `.wash-section` gradients |
-| Paper grain | SVG fractal noise `.watercolor-grain` at low opacity, multiply |
-| Bleed edges | Organic `border-radius` frames (`.bleed-frame`); hero vignette `.watercolor-bleed` |
-| Calm | Large air, soft asymmetry, few type sizes |
+## Content
 
-## Typography
-
-| Role | Font |
-|------|------|
-| Display | Cormorant Garamond |
-| Body / UI | Figtree |
-
-## Imagery
-
-| Asset | Path | Rights |
-|-------|------|--------|
-| Masseria venue | `/public/masseria-spina.jpg` | Wikimedia Commons **CC BY-SA 3.0**, Marco Spina — attribution on page. Official resort photos **not** copied. |
-| Couple / China | `/public/placeholders/*.svg` | Local placeholders — Daniele replaces |
-
-## Editable facts
-
-`lib/wedding.ts` — names, venue, WhatsApp, IBAN placeholder, image meta.  
-Strings: `lib/i18n/messages.ts` (IT default + EN).
+Facts: `lib/wedding.ts` · IT/EN: `lib/i18n/messages.ts`

@@ -21,7 +21,7 @@ describe("wedding config", () => {
   });
 
   it("documents venue image license metadata", () => {
-    assert.equal(wedding.images.venue.attribution.license, "CC BY-SA 3.0");
+    assert.equal(wedding.images.venue.attribution.license, "CC BY-SA 4.0");
     assert.ok(wedding.images.venue.src.startsWith("/"));
   });
 });

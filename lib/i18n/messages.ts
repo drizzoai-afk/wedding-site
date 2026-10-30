@@ -23,7 +23,7 @@ export const messages = {
       "Ci sposiamo alla Masseria Spina Resort, tra ulivi secolari e pietra pugliese.",
     venueLink: "Sito della Masseria",
     venueAttribution:
-      "Foto: Marco Spina · CC BY-SA 3.0 (Wikimedia Commons). Da sostituire con immagine ufficiale quando disponibile.",
+      "Foto hero: Acquario51 · CC BY-SA 4.0 (Wiki Loves Monuments). Da sostituire con immagine ufficiale quando disponibile.",
     coupleTitle: "Noi due",
     coupleCaption: "Spazio per la vostra foto di coppia — da sostituire.",
     dayTitle: "Il giorno",
@@ -89,7 +89,7 @@ export const messages = {
       "We marry at Masseria Spina Resort, among ancient olive trees and Apulian stone.",
     venueLink: "Masseria website",
     venueAttribution:
-      "Photo: Marco Spina · CC BY-SA 3.0 (Wikimedia Commons). Replace with an official resort image when available.",
+      "Hero photo: Acquario51 · CC BY-SA 4.0 (Wiki Loves Monuments). Replace with an official resort image when available.",
     coupleTitle: "The two of us",
     coupleCaption: "Couple photo slot — replace with your photo.",
     dayTitle: "The day",
