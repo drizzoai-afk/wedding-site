@@ -48,16 +48,15 @@ export function PlaceDaySection() {
             <p className="text-xs tracking-[0.2em] text-primary/80 uppercase">
               {t("dayFlowLabel")}
             </p>
-            {/* Wider than copy column but always ≤ viewport — no horizontal scroll.
-                Plain <img> + versioned filename: bypasses next/image + browser caches. */}
-            <div className="relative left-1/2 mt-8 w-[min(100vw-2rem,72rem)] -translate-x-1/2">
+            {/* Same content column / scale as the Masseria address line */}
+            <div className="mt-3 w-full">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`${wedding.images.timeline.src}?v=20261030b`}
+                src={`${wedding.images.timeline.src}?v=20261030c`}
                 alt={wedding.images.timeline.alt}
                 width={wedding.images.timeline.width}
                 height={wedding.images.timeline.height}
-                className="mx-auto h-auto w-full"
+                className="mx-auto h-auto w-full max-w-xl"
                 decoding="async"
               />
             </div>

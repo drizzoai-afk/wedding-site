@@ -24,7 +24,7 @@ describe("wedding config", () => {
   it("points at logo, full-bleed Masseria, timeline, China, and childhood couple photo", () => {
     assert.equal(wedding.images.logo.src, "/masseria-wedding-logo.svg");
     assert.equal(wedding.images.masseria.src, "/masseria-hero-bleed.jpg");
-    assert.equal(wedding.images.timeline.src, "/program-timeline-v2.png");
+    assert.equal(wedding.images.timeline.src, "/program-timeline-v3.png");
     assert.equal(wedding.images.china.src, "/couple-china.jpg");
     assert.equal(wedding.images.couple.src, "/couple-childhood.png");
   });
