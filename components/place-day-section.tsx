@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { SectionTitle } from "@/components/section-title";
 import { useLocale } from "@/lib/i18n/locale-context";
 import { venueAddressBlock, wedding } from "@/lib/wedding";
 
@@ -12,10 +13,7 @@ export function PlaceDaySection() {
     <section id="place-day" className="wash-section relative px-6 py-24 md:px-10">
       <div className="watercolor-grain pointer-events-none absolute inset-0 opacity-25" />
       <div className="relative mx-auto max-w-4xl text-center">
-        <h2 className="font-[family-name:var(--font-display)] text-4xl font-light tracking-tight md:text-5xl">
-          {t("placeDayTitle")}
-        </h2>
-        <div className="horizon-rule mx-auto mt-8 max-w-xs" aria-hidden />
+        <SectionTitle>{t("placeDayTitle")}</SectionTitle>
 
         <div className="mt-14 space-y-14">
           <div>

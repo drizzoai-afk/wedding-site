@@ -7,7 +7,7 @@ import { useLocale } from "@/lib/i18n/locale-context";
 import { cn } from "@/lib/utils";
 import { coupleNames, wedding } from "@/lib/wedding";
 
-/** Paper/wash hero — names + transparent Masseria/date logo (no text date). */
+/** Paper/wash hero — names with & + transparent Masseria/date logo. */
 export function Hero() {
   const { t } = useLocale();
 
@@ -34,14 +34,14 @@ export function Hero() {
           <span className="block">{wedding.partnerOne}</span>
           <span
             aria-hidden
-            className="my-2 block font-[family-name:var(--font-display)] text-base tracking-[0.38em] text-[color:var(--gold)] italic uppercase md:my-3 md:text-lg"
+            className="my-2 block font-[family-name:var(--font-display)] text-[clamp(2rem,8vw,3.5rem)] leading-none font-light text-[color:var(--brown)] md:my-3"
           >
-            {t("heroAnd")}
+            &
           </span>
           <span className="block">{wedding.partnerTwo}</span>
         </h1>
 
-        <div className="animate-rise-3 mt-8 w-full max-w-[14rem] sm:max-w-[16rem] md:max-w-[18rem]">
+        <div className="animate-rise-3 mt-10 w-full max-w-[min(92vw,28rem)] sm:max-w-[32rem] md:max-w-[38rem]">
           <Image
             src={wedding.images.logo.src}
             alt={wedding.images.logo.alt}

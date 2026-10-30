@@ -2,7 +2,9 @@
 
 import { useLocale } from "@/lib/i18n/locale-context";
 import { cn } from "@/lib/utils";
+import type { Locale } from "@/lib/wedding";
 
+/** Header + footer IT/EN switch — shared LocaleProvider. */
 export function LanguageToggle({
   className,
   tone = "light",
@@ -12,12 +14,17 @@ export function LanguageToggle({
 }) {
   const { locale, setLocale, t } = useLocale();
 
+  function select(code: Locale) {
+    setLocale(code);
+  }
+
   return (
     <div
       role="group"
       aria-label={t("langLabel")}
+      data-language-toggle=""
       className={cn(
-        "inline-flex items-center gap-0.5 rounded-full border px-1 py-1 text-xs tracking-[0.14em]",
+        "relative z-50 inline-flex items-center gap-0.5 rounded-full border px-1 py-1 text-xs tracking-[0.14em]",
         tone === "light"
           ? "border-white/35 bg-white/10 text-white/85 backdrop-blur-sm"
           : "border-[color:var(--wash-edge)] bg-[color:var(--paper)]/70 text-foreground",
@@ -28,10 +35,11 @@ export function LanguageToggle({
         <button
           key={code}
           type="button"
-          onClick={() => setLocale(code)}
+          data-locale-btn={code}
+          onClick={() => select(code)}
           aria-pressed={locale === code}
           className={cn(
-            "rounded-full px-2.5 py-1 transition-colors",
+            "cursor-pointer rounded-full px-2.5 py-1 transition-colors",
             locale === code
               ? tone === "light"
                 ? "bg-white text-[oklch(0.32_0.06_28)]"

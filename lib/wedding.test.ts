@@ -21,7 +21,7 @@ describe("wedding config", () => {
   });
 
   it("points at logo, full-bleed Masseria, timeline, and China couple photo", () => {
-    assert.equal(wedding.images.logo.src, "/masseria-wedding-logo.png");
+    assert.equal(wedding.images.logo.src, "/masseria-wedding-logo.svg");
     assert.equal(wedding.images.masseria.src, "/masseria-hero-bleed.jpg");
     assert.equal(wedding.images.timeline.src, "/program-timeline.png");
     assert.equal(wedding.images.china.src, "/couple-china.jpg");
@@ -40,6 +40,7 @@ describe("i18n dictionaries", () => {
     assert.equal(messages.en.placeDayTitle, "Place & day");
     assert.equal(messages.it.placeDayTitle, "Luogo e giorno");
     assert.ok(!("coupleTitle" in messages.it));
+    assert.ok(!("heroAnd" in messages.it));
     assert.ok(!("rsvpGuests" in messages.en));
     assert.ok(!("heroDate" in messages.it));
     assert.ok(!("dayFlowValue" in messages.it));
@@ -49,6 +50,8 @@ describe("i18n dictionaries", () => {
       /Rispondete il prima possibile/,
     );
     assert.match(messages.en.rsvpLead, /as soon as you can/i);
+    assert.equal(messages.en.giftTitle, "A note from China");
+    assert.equal(messages.en.placeDayTitle, "Place & day");
   });
 });
 

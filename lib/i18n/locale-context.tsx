@@ -5,7 +5,6 @@ import {
   useCallback,
   useContext,
   useEffect,
-  useMemo,
   useState,
   type ReactNode,
 } from "react";
@@ -22,7 +21,7 @@ type LocaleContextValue = {
 
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
-function isLocale(value: string | null): value is Locale {
+function isLocale(value: string | null | undefined): value is Locale {
   return value === "it" || value === "en";
 }
 
@@ -58,17 +57,15 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = next;
   }, []);
 
-  const value = useMemo<LocaleContextValue>(
-    () => ({
-      locale,
-      setLocale,
-      t: (key) => messages[locale][key] ?? messages.it[key],
-    }),
-    [locale, setLocale],
+  const t = useCallback(
+    (key: MessageKey) => messages[locale][key] ?? messages.it[key],
+    [locale],
   );
 
   return (
-    <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>
+    <LocaleContext.Provider value={{ locale, setLocale, t }}>
+      {children}
+    </LocaleContext.Provider>
   );
 }
 
