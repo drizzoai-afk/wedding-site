@@ -35,7 +35,9 @@ test.describe("wedding invitation", () => {
     const qr = page.getByTestId("iban-qr");
     await expect(qr).toBeVisible();
     await expect(qr).toHaveAttribute("data-iban", "DE31100110012625155458");
-    await expect(page.getByText(/Scansiona QR|Scan QR/i)).toHaveCount(0);
+    await expect(page.getByText("Scannerizza QR")).toBeVisible();
+    await expect(page.getByText(/Andreina De Maio/)).toBeVisible();
+    await expect(page.getByText(/viaggio di nozze/)).toBeVisible();
 
     await context.grantPermissions(["clipboard-read", "clipboard-write"]);
     await copyBtn.click();
@@ -65,6 +67,8 @@ test.describe("wedding invitation", () => {
     ).toBeVisible();
     await page.locator("#gift").scrollIntoViewIfNeeded();
     await expect(page.getByTestId("iban-qr")).toBeVisible();
+    await expect(page.getByText("Scan QR")).toBeVisible();
+    await expect(page.getByText(/honeymoon/i)).toBeVisible();
     await context.grantPermissions(["clipboard-read", "clipboard-write"]);
     await page.getByTestId("iban-copy").click();
     await expect(page.getByTestId("iban-copy-feedback")).toHaveText(

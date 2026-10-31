@@ -27,11 +27,11 @@ export const messages = {
       "Ciao! Vorrei un consiglio per l'alloggio per il matrimonio di Daniele e Andrea.",
     giftTitle: "Un pensiero dalla Cina",
     giftLead:
-      "Se desiderate farci un regalo, un contributo al nostro viaggio è il gesto che più ci fa piacere.",
+      'Se desiderate farci un regalo, un contributo al nostro viaggio di nozze è il gesto che più ci farebbe piacere. Potete effettuare un bonifico a "Andreina De Maio" al seguente IBAN.',
     giftIbanLabel: "IBAN",
     giftIbanCopy: "Copia IBAN",
     giftIbanCopied: "IBAN copiato",
-    giftQrLabel: "QR",
+    giftQrLabel: "Scannerizza QR",
     rsvpTitle: "RSVP",
     rsvpLead:
       "Diteci se potrete esserci. Rispondete il prima possibile per aiutarci a organizzare al meglio. Grazie mille!",
@@ -74,11 +74,11 @@ export const messages = {
       "Hi! I'd love lodging tips for Daniele and Andrea's wedding.",
     giftTitle: "A postcard from China",
     giftLead:
-      "If you wish to give a gift, a contribution toward our trip means the most to us.",
+      'If you wish to give us a gift, a contribution to our honeymoon is what would please us most. You can make a bank transfer to "Andreina De Maio" using the IBAN below.',
     giftIbanLabel: "IBAN",
     giftIbanCopy: "Copy IBAN",
     giftIbanCopied: "IBAN copied",
-    giftQrLabel: "QR",
+    giftQrLabel: "Scan QR",
     rsvpTitle: "RSVP",
     rsvpLead:
       "Please let us know if you can join. Reply as soon as you can so we can plan everything properly. Thank you so much!",

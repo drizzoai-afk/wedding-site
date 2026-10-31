@@ -117,7 +117,7 @@ export function GiftSection() {
               ) : null}
             </div>
 
-            <div className="mt-8 flex flex-col items-center gap-3 md:items-start">
+            <div className="mt-8 flex w-full flex-col items-center gap-3 text-center">
               <p className="text-xs tracking-[0.18em] text-muted-foreground uppercase">
                 {t("giftQrLabel")}
               </p>
