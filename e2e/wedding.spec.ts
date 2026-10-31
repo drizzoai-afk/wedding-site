@@ -7,6 +7,7 @@ const shot = (name: string) =>
 test.describe("wedding invitation", () => {
   test("IT titles, WhatsApp, IBAN icon copy, Formspree RSVP", async ({
     page,
+    context,
   }) => {
     await page.goto("/");
     await expect(page.getByRole("heading", { name: "Luogo e Giorno" })).toBeVisible();
@@ -28,14 +29,18 @@ test.describe("wedding invitation", () => {
       "DE31 1001 1001 2625 1554 58",
     );
     await expect(page.getByTestId("iban-copy")).toBeVisible();
-    await expect(page.getByRole("button", { name: /Copia IBAN/i })).toHaveCount(
-      1,
-    );
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+    await page.getByTestId("iban-copy").click();
+    await expect
+      .poll(async () => page.evaluate(() => navigator.clipboard.readText()))
+      .toBe("DE31100110012625155458");
     await expect(page.getByText("Scansiona QR")).toBeVisible();
     await expect(
-      page.getByText(/Apre un bonifico precompilato|N26/i),
+      page.getByText(/Apre un bonifico precompilato|N26|Wedding gift|Regalo matrimonio/i),
     ).toHaveCount(0);
-    await expect(page.getByTestId("sepa-qr")).toBeVisible();
+    const qr = page.getByTestId("iban-qr");
+    await expect(qr).toBeVisible();
+    await expect(qr).toHaveAttribute("data-iban", "DE31100110012625155458");
     await page.screenshot({ path: shot("03-gift-iban-qr"), fullPage: false });
 
     await page.locator("#rsvp").scrollIntoViewIfNeeded();

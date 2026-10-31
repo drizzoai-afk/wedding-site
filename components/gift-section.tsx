@@ -6,11 +6,8 @@ import QRCode from "qrcode";
 import { PhotoFrame } from "@/components/photo-frame";
 import { SectionTitle } from "@/components/section-title";
 import { useLocale } from "@/lib/i18n/locale-context";
-import {
-  buildSepaEpcPayload,
-  formatIbanDisplay,
-  normalizeIban,
-} from "@/lib/sepa-epc";
+import { copyText } from "@/lib/copy-text";
+import { formatIbanDisplay, normalizeIban } from "@/lib/sepa-epc";
 import { wedding } from "@/lib/wedding";
 
 /**
@@ -27,13 +24,9 @@ export function GiftSection() {
   const ibanCompact = normalizeIban(wedding.iban);
 
   useEffect(() => {
-    const payload = buildSepaEpcPayload({
-      beneficiaryName: wedding.ibanBeneficiary,
-      iban: wedding.iban,
-      remittance: wedding.ibanRemittance,
-    });
+    // Plain IBAN only — scanning copies/shows the account number, no SEPA notes
     let cancelled = false;
-    QRCode.toDataURL(payload, {
+    QRCode.toDataURL(ibanCompact, {
       errorCorrectionLevel: "M",
       margin: 2,
       width: 220,
@@ -44,16 +37,13 @@ export function GiftSection() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [ibanCompact]);
 
   async function copyIban() {
-    try {
-      await navigator.clipboard.writeText(ibanCompact);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // ignore clipboard failures
-    }
+    const ok = await copyText(ibanCompact);
+    if (!ok) return;
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2000);
   }
 
   return (
@@ -86,12 +76,16 @@ export function GiftSection() {
                 {t("giftIbanLabel")}
               </p>
               <div className="mt-2 flex items-start gap-2">
-                <p
-                  className="min-w-0 flex-1 font-mono text-sm break-all md:text-base"
+                <button
+                  type="button"
+                  onClick={copyIban}
+                  className="min-w-0 flex-1 cursor-pointer text-left font-mono text-sm break-all md:text-base"
                   data-testid="iban-value"
+                  aria-label={copied ? t("giftIbanCopied") : t("giftIbanCopy")}
+                  title={copied ? t("giftIbanCopied") : t("giftIbanCopy")}
                 >
                   {ibanDisplay}
-                </p>
+                </button>
                 <button
                   type="button"
                   onClick={copyIban}
@@ -116,7 +110,8 @@ export function GiftSection() {
                   alt={t("giftQrLabel")}
                   width={220}
                   height={220}
-                  data-testid="sepa-qr"
+                  data-testid="iban-qr"
+                  data-iban={ibanCompact}
                   className="rounded-md bg-[color:var(--paper)]/90 p-2"
                 />
               ) : (

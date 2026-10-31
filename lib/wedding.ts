@@ -23,8 +23,6 @@ export const wedding = {
   formspreeEndpoint: "https://formspree.io/f/mbggabyb",
   /** N26 IBAN — guest gifts */
   iban: "DE31 1001 1001 2625 1554 58",
-  ibanBeneficiary: "Daniele & Andrea",
-  ibanRemittance: "Wedding gift / Regalo matrimonio",
   images: {
     /** Transparent Masseria + date mark for the paper hero */
     logo: {

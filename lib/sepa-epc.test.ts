@@ -15,11 +15,10 @@ describe("sepa epc", () => {
     );
   });
 
-  it("builds v002 EPC payload with empty BIC and remittance", () => {
+  it("builds v002 EPC payload with empty BIC and empty remittance by default", () => {
     const payload = buildSepaEpcPayload({
       beneficiaryName: "Daniele & Andrea",
       iban: "DE31 1001 1001 2625 1554 58",
-      remittance: "Wedding gift",
     });
     assert.equal(
       payload,
@@ -33,8 +32,17 @@ describe("sepa epc", () => {
         "DE31100110012625155458",
         "",
         "",
-        "Wedding gift",
+        "",
       ].join("\n"),
     );
+  });
+
+  it("includes remittance only when provided", () => {
+    const payload = buildSepaEpcPayload({
+      beneficiaryName: "Daniele & Andrea",
+      iban: "DE31 1001 1001 2625 1554 58",
+      remittance: "Wedding gift",
+    });
+    assert.ok(payload.endsWith("\nWedding gift"));
   });
 });
