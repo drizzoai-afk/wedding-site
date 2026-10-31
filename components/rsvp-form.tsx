@@ -6,12 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useLocale } from "@/lib/i18n/locale-context";
-import { buildRsvpMailto } from "@/lib/rsvp-mailto";
 import { cn } from "@/lib/utils";
 import { wedding } from "@/lib/wedding";
 
 type Attendance = "yes" | "no";
-type Status = "idle" | "submitted";
+type Status = "idle" | "submitting" | "submitted" | "error";
 
 export function RsvpForm() {
   const { t, locale } = useLocale();
@@ -24,26 +23,37 @@ export function RsvpForm() {
     { value: "no", label: t("rsvpNo") },
   ];
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const data = new FormData(form);
     const guestName = String(data.get("name") ?? "").trim();
     const email = String(data.get("email") ?? "").trim();
     const note = String(data.get("note") ?? "").trim();
     if (!guestName || !email) return;
 
-    const mailto = buildRsvpMailto({
-      to: wedding.rsvpEmail,
-      name: guestName,
-      email,
-      attendance,
-      note,
-      locale,
-    });
+    const body = new FormData();
+    body.set("name", guestName);
+    body.set("email", email);
+    body.set("_replyto", email);
+    body.set("attendance", attendance);
+    body.set("note", note);
+    body.set("locale", locale);
+    body.set("_subject", `Wedding RSVP — ${guestName}`);
 
-    window.location.href = mailto;
-    setName(guestName);
-    setStatus("submitted");
+    setStatus("submitting");
+    try {
+      const res = await fetch(wedding.formspreeEndpoint, {
+        method: "POST",
+        body,
+        headers: { Accept: "application/json" },
+      });
+      if (!res.ok) throw new Error(`Formspree ${res.status}`);
+      setName(guestName);
+      setStatus("submitted");
+    } catch {
+      setStatus("error");
+    }
   }
 
   if (status === "submitted") {
@@ -75,6 +85,8 @@ export function RsvpForm() {
   return (
     <form
       onSubmit={onSubmit}
+      action={wedding.formspreeEndpoint}
+      method="POST"
       className="mx-auto w-full max-w-lg space-y-6 text-left"
       data-testid="rsvp-form"
     >
@@ -139,7 +151,18 @@ export function RsvpForm() {
         />
       </div>
 
-      <Button type="submit" size="lg" className="h-11 w-full rounded-md">
+      {status === "error" ? (
+        <p className="text-sm text-destructive" role="alert">
+          {t("rsvpError")}
+        </p>
+      ) : null}
+
+      <Button
+        type="submit"
+        size="lg"
+        className="h-11 w-full rounded-md"
+        disabled={status === "submitting"}
+      >
         {t("rsvpSubmit")}
       </Button>
     </form>

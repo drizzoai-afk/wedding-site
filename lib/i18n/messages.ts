@@ -31,8 +31,7 @@ export const messages = {
     giftIbanLabel: "IBAN",
     giftIbanCopy: "Copia IBAN",
     giftIbanCopied: "IBAN copiato",
-    giftQrLabel: "Scansiona con la tua banca (SEPA)",
-    giftQrHint: "Apre un bonifico precompilato nell'app della banca (es. N26).",
+    giftQrLabel: "Scansiona QR",
     rsvpTitle: "RSVP",
     rsvpLead:
       "Diteci se potrete esserci. Rispondete il prima possibile per aiutarci a organizzare al meglio. Grazie mille!",
@@ -45,8 +44,8 @@ export const messages = {
     rsvpNotePlaceholder: "Allergie, canzone, un saluto…",
     rsvpSubmit: "Invia RSVP",
     rsvpThanks: "Grazie,",
-    rsvpThanksBody:
-      "Si aprirà la vostra email verso rsvp@lovie.me (inoltro ImprovMX). Inviate il messaggio per confermare.",
+    rsvpThanksBody: "Abbiamo ricevuto la vostra conferma.",
+    rsvpError: "Invio non riuscito. Riprovate tra poco.",
     rsvpAgain: "Invia un'altra risposta",
     footer: "Con affetto — Daniele & Andrea",
   },
@@ -79,8 +78,7 @@ export const messages = {
     giftIbanLabel: "IBAN",
     giftIbanCopy: "Copy IBAN",
     giftIbanCopied: "IBAN copied",
-    giftQrLabel: "Scan with your bank app (SEPA)",
-    giftQrHint: "Opens a prefilled transfer in your banking app (e.g. N26).",
+    giftQrLabel: "Scan QR",
     rsvpTitle: "RSVP",
     rsvpLead:
       "Please let us know if you can join. Reply as soon as you can so we can plan everything properly. Thank you so much!",
@@ -93,8 +91,8 @@ export const messages = {
     rsvpNotePlaceholder: "Dietary needs, a song, or a hello…",
     rsvpSubmit: "Send RSVP",
     rsvpThanks: "Thank you,",
-    rsvpThanksBody:
-      "Your email app will open to rsvp@lovie.me (ImprovMX forward). Send the message to confirm.",
+    rsvpThanksBody: "We've received your reply.",
+    rsvpError: "Couldn't send. Please try again shortly.",
     rsvpAgain: "Submit another",
     footer: "With love — Daniele & Andrea",
   },

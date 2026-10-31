@@ -5,7 +5,9 @@ const shot = (name: string) =>
   path.join("e2e", "screenshots", `${name}.png`);
 
 test.describe("wedding invitation", () => {
-  test("IT titles, WhatsApp, IBAN/QR, RSVP mailto", async ({ page }) => {
+  test("IT titles, WhatsApp, IBAN icon copy, Formspree RSVP", async ({
+    page,
+  }) => {
     await page.goto("/");
     await expect(page.getByRole("heading", { name: "Luogo e Giorno" })).toBeVisible();
 
@@ -22,22 +24,37 @@ test.describe("wedding invitation", () => {
     await page.screenshot({ path: shot("02-whatsapp-it"), fullPage: false });
 
     await page.locator("#gift").scrollIntoViewIfNeeded();
-    await expect(page.getByTestId("iban-copy")).toContainText(
+    await expect(page.getByTestId("iban-value")).toContainText(
       "DE31 1001 1001 2625 1554 58",
     );
+    await expect(page.getByTestId("iban-copy")).toBeVisible();
+    await expect(page.getByRole("button", { name: /Copia IBAN/i })).toHaveCount(
+      1,
+    );
+    await expect(page.getByText("Scansiona QR")).toBeVisible();
+    await expect(
+      page.getByText(/Apre un bonifico precompilato|N26/i),
+    ).toHaveCount(0);
     await expect(page.getByTestId("sepa-qr")).toBeVisible();
     await page.screenshot({ path: shot("03-gift-iban-qr"), fullPage: false });
 
     await page.locator("#rsvp").scrollIntoViewIfNeeded();
+    const form = page.getByTestId("rsvp-form");
+    await expect(form).toHaveAttribute(
+      "action",
+      "https://formspree.io/f/mbggabyb",
+    );
     await page.screenshot({ path: shot("04-rsvp-form"), fullPage: false });
   });
 
-  test("EN Place and Time + WhatsApp label", async ({ page }) => {
+  test("EN Place and Time + Scan QR", async ({ page }) => {
     await page.goto("/");
     await page.getByRole("banner").getByRole("button", { name: "EN" }).click();
     await expect(
       page.getByRole("heading", { name: "Place and Time" }),
     ).toBeVisible();
+    await page.locator("#gift").scrollIntoViewIfNeeded();
+    await expect(page.getByText("Scan QR")).toBeVisible();
     await page.locator("#stay").scrollIntoViewIfNeeded();
     await expect(
       page.getByRole("link", { name: "Message us on Whatsapp" }),

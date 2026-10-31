@@ -21,9 +21,9 @@ describe("wedding config", () => {
     assert.equal(wedding.whatsapp.display, "+49 1522 8348602");
   });
 
-  it("uses live N26 IBAN and ImprovMX RSVP address", () => {
+  it("uses live N26 IBAN and Formspree RSVP endpoint", () => {
     assert.equal(wedding.iban, "DE31 1001 1001 2625 1554 58");
-    assert.equal(wedding.rsvpEmail, "rsvp@lovie.me");
+    assert.equal(wedding.formspreeEndpoint, "https://formspree.io/f/mbggabyb");
   });
 
   it("points at logo, full-bleed Masseria, timeline, China, and childhood couple photo", () => {
