@@ -19,8 +19,15 @@ export const wedding = {
     e164: "+4915228348602",
     display: "+49 1522 8348602",
   },
-  /** Replace with the couple’s real IBAN when ready (repo only — not labeled as placeholder in UI) */
-  ibanPlaceholder: "IT00 X000 0000 0000 0000 0000 000",
+  /**
+   * ImprovMX forwards this address to the couple’s inbox (drizzo.ai@gmail.com).
+   * Ensure the alias exists in ImprovMX for lovie.me.
+   */
+  rsvpEmail: "rsvp@lovie.me",
+  /** N26 IBAN — guest gifts */
+  iban: "DE31 1001 1001 2625 1554 58",
+  ibanBeneficiary: "Daniele & Andrea",
+  ibanRemittance: "Wedding gift / Regalo matrimonio",
   images: {
     /** Transparent Masseria + date mark for the paper hero */
     logo: {

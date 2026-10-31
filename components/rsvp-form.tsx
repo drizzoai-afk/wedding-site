@@ -6,7 +6,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useLocale } from "@/lib/i18n/locale-context";
+import { buildRsvpMailto } from "@/lib/rsvp-mailto";
 import { cn } from "@/lib/utils";
+import { wedding } from "@/lib/wedding";
 
 type Attendance = "yes" | "no";
 type Status = "idle" | "submitted";
@@ -26,16 +28,20 @@ export function RsvpForm() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const guestName = String(data.get("name") ?? "").trim();
-    if (!guestName) return;
+    const email = String(data.get("email") ?? "").trim();
+    const note = String(data.get("note") ?? "").trim();
+    if (!guestName || !email) return;
 
-    console.info("[rsvp-mock]", {
+    const mailto = buildRsvpMailto({
+      to: wedding.rsvpEmail,
       name: guestName,
-      email: String(data.get("email") ?? "").trim(),
+      email,
       attendance,
-      note: String(data.get("note") ?? "").trim(),
+      note,
       locale,
-      at: new Date().toISOString(),
     });
+
+    window.location.href = mailto;
     setName(guestName);
     setStatus("submitted");
   }
@@ -45,6 +51,7 @@ export function RsvpForm() {
       <div
         className="rounded-xl border border-[color:var(--wash-edge)] bg-[color:var(--paper)]/75 px-6 py-10 text-center"
         role="status"
+        data-testid="rsvp-thanks"
       >
         <p className="font-[family-name:var(--font-display)] text-3xl font-light">
           {t("rsvpThanks")} {name}.
@@ -66,7 +73,11 @@ export function RsvpForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="mx-auto w-full max-w-lg space-y-6 text-left">
+    <form
+      onSubmit={onSubmit}
+      className="mx-auto w-full max-w-lg space-y-6 text-left"
+      data-testid="rsvp-form"
+    >
       <div className="space-y-2">
         <Label htmlFor="name">{t("rsvpName")}</Label>
         <Input

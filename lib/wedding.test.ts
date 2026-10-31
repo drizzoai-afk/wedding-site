@@ -21,6 +21,11 @@ describe("wedding config", () => {
     assert.equal(wedding.whatsapp.display, "+49 1522 8348602");
   });
 
+  it("uses live N26 IBAN and ImprovMX RSVP address", () => {
+    assert.equal(wedding.iban, "DE31 1001 1001 2625 1554 58");
+    assert.equal(wedding.rsvpEmail, "rsvp@lovie.me");
+  });
+
   it("points at logo, full-bleed Masseria, timeline, China, and childhood couple photo", () => {
     assert.equal(wedding.images.logo.src, "/masseria-wedding-logo.svg");
     assert.equal(wedding.images.masseria.src, "/masseria-hero-bleed.jpg");
@@ -39,8 +44,8 @@ describe("i18n dictionaries", () => {
   });
 
   it("has real English strings distinct from Italian", () => {
-    assert.equal(messages.en.placeDayTitle, "Place & day");
-    assert.equal(messages.it.placeDayTitle, "Luogo e giorno");
+    assert.equal(messages.en.placeDayTitle, "Place and Time");
+    assert.equal(messages.it.placeDayTitle, "Luogo e Giorno");
     assert.ok(!("coupleTitle" in messages.it));
     assert.ok(!("heroAnd" in messages.it));
     assert.ok(!("rsvpGuests" in messages.en));
@@ -53,7 +58,9 @@ describe("i18n dictionaries", () => {
     );
     assert.match(messages.en.rsvpLead, /as soon as you can/i);
     assert.equal(messages.en.giftTitle, "A postcard from China");
-    assert.equal(messages.en.placeDayTitle, "Place & day");
+    assert.equal(messages.en.placeDayTitle, "Place and Time");
+    assert.equal(messages.it.stayCta, "Scrivici su Whatsapp");
+    assert.equal(messages.en.stayCta, "Message us on Whatsapp");
     assert.equal(
       messages.it.heroEyebrow,
       "Vi aspettiamo per il nostro matrimonio",
