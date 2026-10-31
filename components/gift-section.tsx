@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Check, Copy } from "lucide-react";
+import QRCode from "qrcode";
 import { PhotoFrame } from "@/components/photo-frame";
 import { SectionTitle } from "@/components/section-title";
 import { useLocale } from "@/lib/i18n/locale-context";
@@ -17,9 +18,26 @@ import { wedding } from "@/lib/wedding";
 export function GiftSection() {
   const { t } = useLocale();
   const [copied, setCopied] = useState(false);
+  const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
 
   const ibanDisplay = formatIbanDisplay(wedding.iban);
   const ibanCompact = normalizeIban(wedding.iban);
+
+  useEffect(() => {
+    // Plain IBAN text only — not a SEPA/bank transfer payload (no remittance notes)
+    let cancelled = false;
+    QRCode.toDataURL(ibanCompact, {
+      errorCorrectionLevel: "M",
+      margin: 2,
+      width: 220,
+      color: { dark: "#3d2a1f", light: "#f7f1e8" },
+    }).then((url) => {
+      if (!cancelled) setQrDataUrl(url);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [ibanCompact]);
 
   async function copyIban() {
     const ok = await copyText(ibanCompact);
@@ -97,6 +115,29 @@ export function GiftSection() {
                   {t("giftIbanCopied")}
                 </p>
               ) : null}
+            </div>
+
+            <div className="mt-8 flex flex-col items-center gap-3 md:items-start">
+              <p className="text-xs tracking-[0.18em] text-muted-foreground uppercase">
+                {t("giftQrLabel")}
+              </p>
+              {qrDataUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={qrDataUrl}
+                  alt={t("giftQrLabel")}
+                  width={220}
+                  height={220}
+                  data-testid="iban-qr"
+                  data-iban={ibanCompact}
+                  className="rounded-md bg-[color:var(--paper)]/90 p-2"
+                />
+              ) : (
+                <div
+                  className="size-[220px] animate-pulse rounded-md bg-[color:var(--wash-soft)]"
+                  aria-hidden
+                />
+              )}
             </div>
           </div>
         </div>

@@ -31,6 +31,7 @@ export const messages = {
     giftIbanLabel: "IBAN",
     giftIbanCopy: "Copia IBAN",
     giftIbanCopied: "IBAN copiato",
+    giftQrLabel: "QR",
     rsvpTitle: "RSVP",
     rsvpLead:
       "Diteci se potrete esserci. Rispondete il prima possibile per aiutarci a organizzare al meglio. Grazie mille!",
@@ -77,6 +78,7 @@ export const messages = {
     giftIbanLabel: "IBAN",
     giftIbanCopy: "Copy IBAN",
     giftIbanCopied: "IBAN copied",
+    giftQrLabel: "QR",
     rsvpTitle: "RSVP",
     rsvpLead:
       "Please let us know if you can join. Reply as soon as you can so we can plan everything properly. Thank you so much!",
