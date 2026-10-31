@@ -5,7 +5,7 @@ const shot = (name: string) =>
   path.join("e2e", "screenshots", `${name}.png`);
 
 test.describe("wedding invitation", () => {
-  test("IT titles, WhatsApp, IBAN icon copy, Formspree RSVP", async ({
+  test("IT titles, WhatsApp, IBAN copy feedback, Formspree RSVP", async ({
     page,
     context,
   }) => {
@@ -28,20 +28,22 @@ test.describe("wedding invitation", () => {
     await expect(page.getByTestId("iban-value")).toContainText(
       "DE31 1001 1001 2625 1554 58",
     );
-    await expect(page.getByTestId("iban-copy")).toBeVisible();
+    const copyBtn = page.getByTestId("iban-copy");
+    await expect(copyBtn).toBeVisible();
+    await expect(copyBtn).toHaveCSS("cursor", "pointer");
+    await expect(page.getByText(/Scansiona QR|Scan QR/i)).toHaveCount(0);
+    await expect(page.getByTestId("iban-qr")).toHaveCount(0);
+
     await context.grantPermissions(["clipboard-read", "clipboard-write"]);
-    await page.getByTestId("iban-copy").click();
+    await copyBtn.click();
     await expect
       .poll(async () => page.evaluate(() => navigator.clipboard.readText()))
       .toBe("DE31100110012625155458");
-    await expect(page.getByText("Scansiona QR")).toBeVisible();
-    await expect(
-      page.getByText(/Apre un bonifico precompilato|N26|Wedding gift|Regalo matrimonio/i),
-    ).toHaveCount(0);
-    const qr = page.getByTestId("iban-qr");
-    await expect(qr).toBeVisible();
-    await expect(qr).toHaveAttribute("data-iban", "DE31100110012625155458");
-    await page.screenshot({ path: shot("03-gift-iban-qr"), fullPage: false });
+    await expect(page.getByTestId("iban-copy-feedback")).toHaveText(
+      "IBAN copiato",
+    );
+    await expect(page.getByTestId("iban-copy-check")).toBeVisible();
+    await page.screenshot({ path: shot("03-gift-iban"), fullPage: false });
 
     await page.locator("#rsvp").scrollIntoViewIfNeeded();
     const form = page.getByTestId("rsvp-form");
@@ -52,14 +54,19 @@ test.describe("wedding invitation", () => {
     await page.screenshot({ path: shot("04-rsvp-form"), fullPage: false });
   });
 
-  test("EN Place and Time + Scan QR", async ({ page }) => {
+  test("EN Place and Time + IBAN copied feedback", async ({ page, context }) => {
     await page.goto("/");
     await page.getByRole("banner").getByRole("button", { name: "EN" }).click();
     await expect(
       page.getByRole("heading", { name: "Place and Time" }),
     ).toBeVisible();
     await page.locator("#gift").scrollIntoViewIfNeeded();
-    await expect(page.getByText("Scan QR")).toBeVisible();
+    await expect(page.getByText(/Scansiona QR|Scan QR/i)).toHaveCount(0);
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+    await page.getByTestId("iban-copy").click();
+    await expect(page.getByTestId("iban-copy-feedback")).toHaveText(
+      "IBAN copied",
+    );
     await page.locator("#stay").scrollIntoViewIfNeeded();
     await expect(
       page.getByRole("link", { name: "Message us on Whatsapp" }),

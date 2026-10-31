@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Copy } from "lucide-react";
-import QRCode from "qrcode";
+import { useState } from "react";
+import { Check, Copy } from "lucide-react";
 import { PhotoFrame } from "@/components/photo-frame";
 import { SectionTitle } from "@/components/section-title";
 import { useLocale } from "@/lib/i18n/locale-context";
@@ -18,26 +17,9 @@ import { wedding } from "@/lib/wedding";
 export function GiftSection() {
   const { t } = useLocale();
   const [copied, setCopied] = useState(false);
-  const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
 
   const ibanDisplay = formatIbanDisplay(wedding.iban);
   const ibanCompact = normalizeIban(wedding.iban);
-
-  useEffect(() => {
-    // Plain IBAN only — scanning copies/shows the account number, no SEPA notes
-    let cancelled = false;
-    QRCode.toDataURL(ibanCompact, {
-      errorCorrectionLevel: "M",
-      margin: 2,
-      width: 220,
-      color: { dark: "#3d2a1f", light: "#f7f1e8" },
-    }).then((url) => {
-      if (!cancelled) setQrDataUrl(url);
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [ibanCompact]);
 
   async function copyIban() {
     const ok = await copyText(ibanCompact);
@@ -90,36 +72,31 @@ export function GiftSection() {
                   type="button"
                   onClick={copyIban}
                   data-testid="iban-copy"
-                  className="mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-md text-[color:var(--ink)] transition-colors hover:bg-[color:var(--wash-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--terracotta)]"
+                  className="mt-0.5 inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md text-[color:var(--ink)] transition-colors hover:bg-[color:var(--wash-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--terracotta)]"
                   aria-label={copied ? t("giftIbanCopied") : t("giftIbanCopy")}
                   title={copied ? t("giftIbanCopied") : t("giftIbanCopy")}
                 >
-                  <Copy className="size-4" aria-hidden />
+                  {copied ? (
+                    <Check
+                      className="size-4 text-[color:var(--terracotta)]"
+                      aria-hidden
+                      data-testid="iban-copy-check"
+                    />
+                  ) : (
+                    <Copy className="size-4" aria-hidden />
+                  )}
                 </button>
               </div>
-            </div>
-
-            <div className="mt-8 flex flex-col items-center gap-3 md:items-start">
-              <p className="text-xs tracking-[0.18em] text-muted-foreground uppercase">
-                {t("giftQrLabel")}
-              </p>
-              {qrDataUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={qrDataUrl}
-                  alt={t("giftQrLabel")}
-                  width={220}
-                  height={220}
-                  data-testid="iban-qr"
-                  data-iban={ibanCompact}
-                  className="rounded-md bg-[color:var(--paper)]/90 p-2"
-                />
-              ) : (
-                <div
-                  className="size-[220px] animate-pulse rounded-md bg-[color:var(--wash-soft)]"
-                  aria-hidden
-                />
-              )}
+              {copied ? (
+                <p
+                  role="status"
+                  aria-live="polite"
+                  data-testid="iban-copy-feedback"
+                  className="mt-2 text-sm font-medium text-[color:var(--terracotta)]"
+                >
+                  {t("giftIbanCopied")}
+                </p>
+              ) : null}
             </div>
           </div>
         </div>
