@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Copy } from "lucide-react";
 import QRCode from "qrcode";
 import { PhotoFrame } from "@/components/photo-frame";
 import { SectionTitle } from "@/components/section-title";
-import { Button } from "@/components/ui/button";
 import { useLocale } from "@/lib/i18n/locale-context";
 import {
   buildSepaEpcPayload,
@@ -52,7 +52,7 @@ export function GiftSection() {
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Fallback: select via prompt-less copy attempt ignored
+      // ignore clipboard failures
     }
   }
 
@@ -85,18 +85,24 @@ export function GiftSection() {
               <p className="text-xs tracking-[0.18em] text-muted-foreground uppercase">
                 {t("giftIbanLabel")}
               </p>
-              <button
-                type="button"
-                onClick={copyIban}
-                data-testid="iban-copy"
-                className="mt-2 w-full cursor-pointer rounded-md text-left font-mono text-sm break-all transition-colors hover:bg-[color:var(--wash-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--terracotta)] md:text-base"
-                aria-label={t("giftIbanCopy")}
-              >
-                {ibanDisplay}
-              </button>
-              <p className="mt-2 text-xs text-muted-foreground" role="status">
-                {copied ? t("giftIbanCopied") : t("giftIbanCopy")}
-              </p>
+              <div className="mt-2 flex items-start gap-2">
+                <p
+                  className="min-w-0 flex-1 font-mono text-sm break-all md:text-base"
+                  data-testid="iban-value"
+                >
+                  {ibanDisplay}
+                </p>
+                <button
+                  type="button"
+                  onClick={copyIban}
+                  data-testid="iban-copy"
+                  className="mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-md text-[color:var(--ink)] transition-colors hover:bg-[color:var(--wash-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--terracotta)]"
+                  aria-label={copied ? t("giftIbanCopied") : t("giftIbanCopy")}
+                  title={copied ? t("giftIbanCopied") : t("giftIbanCopy")}
+                >
+                  <Copy className="size-4" aria-hidden />
+                </button>
+              </div>
             </div>
 
             <div className="mt-8 flex flex-col items-center gap-3 md:items-start">
@@ -119,18 +125,6 @@ export function GiftSection() {
                   aria-hidden
                 />
               )}
-              <p className="max-w-xs text-sm text-muted-foreground">
-                {t("giftQrHint")}
-              </p>
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                className="mt-1"
-                onClick={copyIban}
-              >
-                {copied ? t("giftIbanCopied") : t("giftIbanCopy")}
-              </Button>
             </div>
           </div>
         </div>

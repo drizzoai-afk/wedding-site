@@ -19,11 +19,8 @@ export const wedding = {
     e164: "+4915228348602",
     display: "+49 1522 8348602",
   },
-  /**
-   * ImprovMX forwards this address to the couple’s inbox (drizzo.ai@gmail.com).
-   * Ensure the alias exists in ImprovMX for lovie.me.
-   */
-  rsvpEmail: "rsvp@lovie.me",
+  /** Formspree endpoint — notify address set in Formspree dashboard */
+  formspreeEndpoint: "https://formspree.io/f/mbggabyb",
   /** N26 IBAN — guest gifts */
   iban: "DE31 1001 1001 2625 1554 58",
   ibanBeneficiary: "Daniele & Andrea",
